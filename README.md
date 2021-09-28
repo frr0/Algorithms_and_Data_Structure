@@ -1,2 +1,0 @@
-# Algorithms_and_Data_Structure
-Algorithms_and_Data_Structure
