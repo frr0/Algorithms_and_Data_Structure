@@ -5,12 +5,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include "util.h"
 
-// typedef struct name_s *name_t;
-//
-// struct name_s{
-//   char *word;
-//   name_t *next;
-// };
+typedef struct name_s *name_t;
+
+struct name_s{
+  char word[II];
+  int occurrences;
+};
+
 
 #endif

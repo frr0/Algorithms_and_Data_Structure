@@ -23,86 +23,46 @@ FILE *open_file(char* filename, char* mode)
     return f;
 }
 
-int file_num_of_line_completed2(char *filename, char *mode, int N)
+void read_words(char *filename, char *mode, int N)
 {
-    /** name_t name; */
+    name_t name[C];
     char **mat;
-    char *line;
-    char *_word;
-    char *string;
     FILE *f;
-	  int n=0;
-	  int m=0;
 	  int i=0;
     int j=0;
-	  int r=0;
-	  int c=0;
-	  int a=0;
+    int r=0;
+    int c=0;
 
-    /** name = malloc_ck(C*sizeof(name_t)); */
     mat = mat_allocation(c, r);
-    line = malloc_ck(C*sizeof(char));
-    _word = malloc_ck(C*sizeof(char));
-    string = malloc_ck(C*sizeof(char));
     f = open_file(filename, "r");
 
     /** f2.txt reanding */
     for(i=0; i<II; i++){
       for (j = 0; j < C; j++) {
+        fscanf(f, "%c", &mat[i][j]);
         if (mat == NULL) {
           mat[i][j]++; 
         }
         mat[i][j] = tolower(mat[i][j]);
-        fscanf(f, "%c", &mat[i][j]);
+        name[j]->word[i] = mat[i][j];
         printf("%c", mat[i][j]);
       }
     }
       printf("\n");
     
-    /** for(i=0; i<C; i++) */
-    /** { */
-    /**   for(int k=0; k<j; k++){ */
-    /**     printf("%s", mat[i]); */
-    /**   } */
-    /** } */
-
-		/** while(fgets(line, C, f) != NULL) */
-    /** { */
-    /**   while (line[i]) { */
-    /**     _word[i] = tolower(line[i]); */
-    /**     [> mat[i][j] = tolower(line[i]); <] */
-    /**     mat[i][j] = _word[i]; */
-    /**     [> printf("%s\n", _word); <] */
-    /**     j++; */
-    /**    */
-    /**     [> printf("%s", _word); <] */
-    /**   } */
-    /**     [> name->word = _word; <] */
-    /**     [> printf("%s", name->word); <] */
-    /**     i++; */
-    /**     mat[j] = _word; */
-    /** } */
-    /** while (fscanf(f, "%s", word) > EOF); */
-    /** { */
-    /**   printf("%s", word); */
-    /**   word++; */
-		/**   n++; */
-    /** } */
-
 	fclose(f);
-
-    return n;
-
 }
 
-int file_num_of_line_completed1(char *filename, char *mode, int N)
+int Search_words(char *filename, char *mode, int N)
 {
+    name_t name[C];
     char *line;
     char *word;
     char *string;
     FILE *f;
 	  int n=0;
-	  int m=0;
+	  int i=0;
+		/** int m=0; */
 
     line = malloc_ck(C*sizeof(char));
     word = malloc_ck(C*sizeof(char));
@@ -113,17 +73,19 @@ int file_num_of_line_completed1(char *filename, char *mode, int N)
 	{
     string = line;
     while (sscanf(string, "%s", word) > 0) {
-      printf("%s", word);
-      string++;
+      for(i=0; i<II; i++){
+        if (strcmp(word, name[i]->word)==0)
+        {
+          name[i]->occurrences++;
+        }
+      }
+     	string=string+strlen(word);
     }
-		n++;
 	}
-
-	fprintf(stdout,"\nNumber of lines: %d\n", n);
-	fprintf(stdout,"\nNumber of words: %d\n", m);
 
 	fclose(f);
 
+    n = name[i]->occurrences;
     return n;
 
 }
@@ -153,11 +115,6 @@ char **mat_allocation(int c, int r)
     }
 
     return mat;
-}
-
-void storefile()
-{
-  /** while(fscanf(f, , ...)) */
 }
 
 /** Algorithms and Data Structures */

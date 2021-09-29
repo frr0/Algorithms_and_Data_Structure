@@ -8,10 +8,9 @@
 
 void arg_check(int argc, char *argv[]);
 FILE *open_file(char* filename, char* mode);
-int file_num_of_line_completed1(char *filename, char *mode, int N);
-int file_num_of_line_completed2(char *filename, char *mode, int N);
+void read_words(char *filename, char *mode, int N);
+int Search_words(char *filename, char *mode, int N);
 void *malloc_ck(int size);
 char **mat_allocation(int c, int r);
-void storefile();
 
 #endif

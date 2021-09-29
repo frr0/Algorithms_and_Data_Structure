@@ -7,8 +7,8 @@ int main(int argc, char *argv[])
   int n2 = 0;
   arg_check(argc, argv);
   /** open_file(argv[2], "r"); */
-  file_num_of_line_completed2(argv[2], "r", n2);
+  read_words(argv[2], "r", n2);
   /** open_file(argv[1], "r"); */
-  file_num_of_line_completed1(argv[1], "r", n1);
+  Search_words(argv[1], "r", n1);
   return 0;
 }
