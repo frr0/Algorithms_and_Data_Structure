@@ -7,6 +7,8 @@
 #include <ctype.h>
 #include "util.h"
 
+#define DEBUG 0
+
 typedef struct name_s *name_t;
 
 struct name_s{

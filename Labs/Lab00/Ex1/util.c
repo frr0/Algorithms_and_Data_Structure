@@ -1,99 +1,99 @@
-#include "client.h"
 #include "util.h"
+#include "client.h"
 
-void arg_check(int argc, char *argv[])
-{
-    if(argc!=3)//checking argc
-    {
-        printf("Error, not 3 args");
-        exit(-1);
-    }
+void arg_check(int argc, char *argv[]) {
+  if (argc != 3) // checking argc
+  {
+    printf("Error, not 3 args");
+    exit(-1);
+  }
 }
 
-FILE *open_file(char* filename, char* mode)
-{
-    FILE *f;
-    f = fopen(filename, mode);
-    if(!f)
-    {
-        perror(filename);
-        exit(EXIT_FAILURE);
-    }
+FILE *open_file(char *filename, char *mode) {
+  FILE *f;
+  f = fopen(filename, mode);
+  if (!f) {
+    perror(filename);
+    exit(EXIT_FAILURE);
+  }
 
-    return f;
+  return f;
 }
 
-void read_words(char *filename, char *mode, int N)
-{
-    name_t name[C];
-    char **mat;
-    FILE *f;
-	  int i=0;
-    int j=0;
-    int r=0;
-    int c=0;
+void read_words(char *filename, char *mode, int N) {
+  name_t name[C];
+  char **mat;
+  FILE *f;
+  int i = 0;
+  int j = 0;
+  int r = 0;
+  int c = 0;
 
-    mat = mat_allocation(c, r);
-    f = open_file(filename, "r");
+  mat = mat_allocation(c, r);
+  f = open_file(filename, "r");
 
-    /** f2.txt reanding */
-    for(i=0; i<II; i++){
-      for (j = 0; j < C; j++) {
-        fscanf(f, "%c", &mat[i][j]);
-        if (mat == NULL) {
-          mat[i][j]++; 
-        }
-        mat[i][j] = tolower(mat[i][j]);
-        name[j]->word[i] = mat[i][j];
-        printf("%c", mat[i][j]);
+  /** f2.txt reanding */
+  for (i = 0; i < II; i++) {
+    printf("aaaaai%d\n", i);
+    for (j = 0; j < C; j++) {
+      printf("aaaaaj%d\n", j);
+      fscanf(f, "%c", &mat[i][j]);
+      printf("aaaaa1%d\n", j);
+      if (mat == NULL) {
+      printf("aaaaa2%d\n", j);
+        mat[i][j]++;
       }
+      printf("aaaaa3%d\n", j);
+      mat[i][j] = tolower(mat[i][j]);
+      printf("aaaaa4%d\n", j);
+      /** name[j]->word[i] = mat[i][j]; */
+      printf("aaaaa5%d\n", j);
+      printf("%c", mat[i][j]);
     }
-      printf("\n");
-    
-	fclose(f);
+  }
+  printf("\n");
+
+  fclose(f);
 }
 
-int Search_words(char *filename, char *mode, int N)
-{
-    name_t name[C];
-    char *line;
-    char *word;
-    char *string;
-    FILE *f;
-	  int n=0;
-	  int i=0;
-		/** int m=0; */
+int Search_words(char *filename, char *mode, int N) {
+  name_t name[C];
+  char *line;
+  char *word;
+  char *string;
+  FILE *f;
+  int n = 0;
+  int i = 0;
+  /** int m=0; */
 
-    line = malloc_ck(C*sizeof(char));
-    word = malloc_ck(C*sizeof(char));
-    string = malloc_ck(C*sizeof(char));
-    f = open_file(filename, "r");
+  line = malloc_ck(C * sizeof(char));
+  word = malloc_ck(C * sizeof(char));
+  string = malloc_ck(C * sizeof(char));
+  f = open_file(filename, "r");
 
-	while(fgets(line, C, f) != NULL)
-	{
+  while (fgets(line, C, f) != NULL) {
     string = line;
     while (sscanf(string, "%s", word) > 0) {
-      for(i=0; i<II; i++){
-        if (strcmp(word, name[i]->word)==0)
-        {
+      for (i = 0; i < II; i++) {
+        if (strcmp(word, name[i]->word) == 0) {
+          name[i]->occurrences++;
           name[i]->occurrences++;
         }
       }
-     	string=string+strlen(word);
+      string = string + strlen(word);
     }
-	}
+  }
 
-	fclose(f);
+  fclose(f);
 
-    n = name[i]->occurrences;
-    return n;
-
+  n = name[i]->occurrences;
+  return n;
 }
 
 void *malloc_ck(int size) {
   void *ptr = malloc(size);
-  
-  if (ptr == NULL){
+
+  if (ptr == NULL) {
     printf("Memory allocation error!\n");
     exit(EXIT_FAILURE);
   }
@@ -101,20 +101,19 @@ void *malloc_ck(int size) {
   return ptr;
 }
 
-char **mat_allocation(int c, int r)
-{
-    char **mat;
-    c = 20+1;
-    r = 100+1;
-    /** allocation rows */
-    mat=malloc_ck(r*sizeof(char*));
+char **mat_allocation(int c, int r) {
+  char **mat;
+  c = 20 + 1;
+  r = 100 + 1;
+  /** allocation rows */
+  mat = malloc_ck(r * sizeof(char *));
 
-    /** allocation colons (lettes/characters) */
-    for (int i = 0; i < c; i++) {
-        mat[i]=malloc_ck(c*sizeof(char));
-    }
+  /** allocation colons (lettes/characters) */
+  for (int i = 0; i < c; i++) {
+    mat[i] = malloc_ck(c * sizeof(char));
+  }
 
-    return mat;
+  return mat;
 }
 
 /** Algorithms and Data Structures */
