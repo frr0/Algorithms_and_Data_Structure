@@ -1,5 +1,6 @@
 #include "util.h"
 #include "client.h"
+#include <string.h>
 
 void arg_check(int argc, char *argv[]) {
   if (argc != 3) // checking argc
@@ -34,22 +35,17 @@ void read_words(char *filename, char *mode, int N) {
 
   /** f2.txt reanding */
   for (i = 0; i < II; i++) {
-    printf("aaaaai%d\n", i);
     for (j = 0; j < C; j++) {
-      printf("aaaaaj%d\n", j);
       fscanf(f, "%c", &mat[i][j]);
-      printf("aaaaa1%d\n", j);
-      if (mat == NULL) {
-      printf("aaaaa2%d\n", j);
-        mat[i][j]++;
+      if (mat[i][j] == "\n") {
+      /**   mat[i][j]++; */
+        break;
       }
-      printf("aaaaa3%d\n", j);
       mat[i][j] = tolower(mat[i][j]);
-      printf("aaaaa4%d\n", j);
-      /** name[j]->word[i] = mat[i][j]; */
-      printf("aaaaa5%d\n", j);
       printf("%c", mat[i][j]);
     }
+      strcpy(name[i]->word, mat[i]);
+      printf("%s\n", name[j]->word);
   }
   printf("\n");
 
