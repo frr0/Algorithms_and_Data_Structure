@@ -16,5 +16,4 @@ struct name_s{
   int occurrences;
 };
 
-
 #endif

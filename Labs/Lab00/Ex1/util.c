@@ -23,32 +23,22 @@ FILE *open_file(char *filename, char *mode) {
 
 void read_words(char *filename, char *mode, int N) {
   name_t name[C];
-  char **mat;
   FILE *f;
-  int i = 0;
-  int j = 0;
-  int r = 0;
-  int c = 0;
+  char __word[II];
 
-  mat = mat_allocation(c, r);
+  /** __word = malloc_ck(II * sizeof(char)); */
   f = open_file(filename, "r");
 
-  /** f2.txt reanding */
-  for (i = 0; i < II; i++) {
-    for (j = 0; j < C; j++) {
-      fscanf(f, "%c", &mat[i][j]);
-      if (mat[i][j] == "\n") {
-      /**   mat[i][j]++; */
-        break;
-      }
-      mat[i][j] = tolower(mat[i][j]);
-      printf("%c", mat[i][j]);
+  for (int i=0; i<5; i++){
+    fscanf(f, "%s", __word);
+    printf("%s\n", __word);
+    for(int j = 0; __word[j]; j++){
+      __word[j] = tolower(__word[j]);
     }
-      strcpy(name[i]->word, mat[i]);
-      printf("%s\n", name[j]->word);
+    printf("%s\n", __word);
+    strcpy(name[i]->word, __word);
+    printf("%s\n", name[i]->word);
   }
-  printf("\n");
-
   fclose(f);
 }
 

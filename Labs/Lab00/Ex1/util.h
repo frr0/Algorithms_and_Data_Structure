@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#define C 100+1
+#define C 4+1
 #define II 20+1
 
 void arg_check(int argc, char *argv[]);

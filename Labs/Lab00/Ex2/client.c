@@ -1,36 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define X 10
+
 int main(int argc, char *argv[])
 {
-/**   float *ptr; */
-/** float f = 7.5; */
-/**  */
-/** int *ppp; */
-/** int a = 3; */
-/**  */
-/** ptr = &f; */
-/** ppp = &a; */
-/**  */
-/** printf("%f\n%f\n", f, *ptr);  */
-/** printf("%d\n%d\n%d\n", (long unsigned int) &a, &(*ppp), ppp);  */
-
-  
-  int v = 5;
+  int v[X];
   int *p;
+
   p = &v;
 
-  printf("%d\n", v);
-  /** printf("%d\n", *v); */
-  printf("%lu\n", (long unsigned int) &v);
-  printf("%lu\n", (long unsigned int) &v);
-  printf("%lu\n", (long unsigned int) p);
-  printf("%d\n", *p);
-  printf("%lu\n", (long unsigned int) &p);
-  printf("%d\n", *(&v));
-  /** printf("%d\n", &(*v)); */
-  printf("%lu\n", (long unsigned int) *(&p));
-  printf("%lu\n", (long unsigned int) &(*p));
+  for(int i=0; i<X; i++, p++){
+    scanf("%d", p);
+    printf("%d\n", *p);
+  }
+
 
   return 0;
 }
