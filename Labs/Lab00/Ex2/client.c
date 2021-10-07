@@ -67,37 +67,35 @@ void scan_file(char *filename, char *mode){
 
 	/* core */
 	for(int i = 0; i<nL; i++){	
-		fscanf(f, "%s %f %f", tmp_name, &tmp_x, &tmp_y);
+		fscanf(f, "%s %f %f", tmp_name, &tmp_x, &tmp_y);//scan from file
 		for(int j = 0; j<nL; j++){
-			/* if(tmp_name == tmp[i].name){ */
-			/* for(int z = 0; z<nL; z++){ */
-				/* if(tmp_name[z] == tmp[j].name[z]){ */
-					/* tmp[i].x2 = tmp_x; */
-					/* tmp[i].y2 = tmp_y; */
-					/* h = tmp[i].x2-tmp[i].x1; */
-					/* b = tmp[i].y2-tmp[i].y1; */
-					/* tmp[i].perimeter = 2*(h+b); */
-					/* tmp[i].area = h*b; */
-				/* } */
-			/* } */
-			if(strcmp(tmp_name, tmp[j].name) == 0){
-				tmp[i].x2 = tmp_x;
-				tmp[i].y2 = tmp_y;
-				h = tmp[i].x2-tmp[i].x1;
-				b = tmp[i].y2-tmp[i].y1;
-				tmp[i].perimeter = 2*(h+b);
-				tmp[i].area = h*b;
+			if(strcmp(tmp_name, tmp[j].name) == 0){ //check for name just scanned in struct
+				tmp[j].x1 = tmp[i].x1; //if so, copy the the 2 first values 
+				tmp[j].x2 = tmp[i].x2;
+				tmp[j].x2 = tmp_x;// add the last two
+				tmp[j].y2 = tmp_y;
+				h = tmp[j].x2-tmp[j].x1; //calc hight 
+				b = tmp[j].y2-tmp[j].y1;// calc base
+				tmp[j].perimeter = 2*(h+b);// calc per
+				tmp[j].area = h*b;// calc area
+				//--------------------------
+				tmp[i].x1 = 0;//equalize the values of the first time the name has been gotten
+				tmp[i].x2 = 0;// so that i can delete the empty line since one line is givene
+				tmp[i].x2 = 0;// in two
+				tmp[i].y2 = 0;
 			}
 		}
-		strcpy(tmp[i].name, tmp_name);
-		tmp[i].x1 = tmp_x;
+		strcpy(tmp[i].name, tmp_name);// if the word is not in struct, add it
+		tmp[i].x1 = tmp_x;// with the two values
 		tmp[i].y1 = tmp_y;
 	}
 	fclose(f);
 	printf("\nName\tx1\t  \ty1\t  \tx2\t  \ty2\t  \tPerimeter\tArea\n");
 	printf("------------------------------------------------------------------------------------------------\n");
 	for(int k = 0; k<(nL); k++){	
-		printf("%s\t%f\t%f\t%f\t%f\t%f\t%f\n", tmp[k].name, tmp[k].x1, tmp[k].y1, tmp[k].x2, tmp[k].y2, tmp[k].perimeter, tmp[k].area);
+		if (tmp[k].x1 == 0 && tmp[k].x1 == 0 && tmp[k].x1 == 0 && tmp[k].x1 == 0){
+			printf("%s\t%f\t%f\t%f\t%f\t%f\t%f\n", tmp[k].name, tmp[k].x1, tmp[k].y1, tmp[k].x2, tmp[k].y2, tmp[k].perimeter, tmp[k].area);
+		}
 	}
 }
 
