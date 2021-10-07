@@ -1,5 +1,5 @@
 target:
-	gcc -Wall -g -o program client.c && ./program 
+	gcc -Wall -g -o program client.c && ./program fileIn.txt fileArea.txt filePerimeter.txt
 
 clean:
 	rm -rf program

@@ -9,11 +9,11 @@
 
 #define DEBUG 0
 
-typedef struct name_s *name_t;
+// typedef struct name_s *name_t;
 
-struct name_s{
+typedef struct {
   char word[II];
   int occurrences;
-};
+}name_t;
 
 #endif

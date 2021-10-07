@@ -1,5 +1,6 @@
 #include "util.h"
 #include "client.h"
+#include <stdio.h>
 #include <string.h>
 
 void arg_check(int argc, char *argv[]) {
@@ -22,58 +23,62 @@ FILE *open_file(char *filename, char *mode) {
 }
 
 void read_words(char *filename, char *mode, int N) {
-  name_t name[C];
+  name_t name[T];
   FILE *f;
   char __word[II];
 
   /** __word = malloc_ck(II * sizeof(char)); */
   f = open_file(filename, "r");
 
-  for (int i=0; i<5; i++){
+  for (int i=0; i<3; i++){
     fscanf(f, "%s", __word);
-    printf("%s\n", __word);
+    /** printf("upper: %s\n", __word); */
     for(int j = 0; __word[j]; j++){
       __word[j] = tolower(__word[j]);
     }
-    printf("%s\n", __word);
-    strcpy(name[i]->word, __word);
-    printf("%s\n", name[i]->word);
+    /** printf("in __word: %s\n", __word); */
+    strcpy(name[i].word, __word);
+    printf("nella struct: %s\n", name[i].word);
   }
   fclose(f);
 }
 
-int Search_words(char *filename, char *mode, int N) {
-  name_t name[C];
+void Search_words(char *filename, char *mode, int N) {
+  name_t name[T];
   char *line;
   char *word;
   char *string;
   FILE *f;
-  int n = 0;
   int i = 0;
-  /** int m=0; */
 
   line = malloc_ck(C * sizeof(char));
   word = malloc_ck(C * sizeof(char));
   string = malloc_ck(C * sizeof(char));
   f = open_file(filename, "r");
 
+  for (int k=0; k<3; k++){
+    name[i].occurrences = 0;
+  }
+
   while (fgets(line, C, f) != NULL) {
     string = line;
     while (sscanf(string, "%s", word) > 0) {
-      for (i = 0; i < II; i++) {
-        if (strcmp(word, name[i]->word) == 0) {
-          name[i]->occurrences++;
-          name[i]->occurrences++;
+      for (i = 0; i < 3; i++) {
+        if (strcmp(word, name[i].word) == 0) {
+          name[i].occurrences++;
         }
       }
       string = string + strlen(word);
     }
   }
 
+  for (int k=0; k<3; k++){
+    printf("%s: occurs %d times\n", name[i].word, name[i].occurrences);
+  }
+
   fclose(f);
 
-  n = name[i]->occurrences;
-  return n;
+  return;
 }
 
 void *malloc_ck(int size) {

@@ -3,7 +3,10 @@
 
 int main(int argc, char *argv[]) {
   int n1 = 0;
-  int n2 = 0;
+  int n2= 0;
+  int n3 =0;
+
+  
   arg_check(argc, argv);
   /** open_file(argv[2], "r"); */
   read_words(argv[2], "r", n2);
