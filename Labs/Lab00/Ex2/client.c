@@ -22,6 +22,7 @@ void scan_file();
 int file_num_of_line_completed(char *filename, char *mode);
 void *malloc_ck(int size);
 FILE *open_file(char *filename, char *mode);
+void BubbleSort (int A[], int n);
 
 int main(int argc, char *argv[])
 {
@@ -97,6 +98,67 @@ void scan_file(char *filename, char *mode){
 			printf("%s\t%f\t%f\t%f\t%f\t%f\t%f\n", tmp[k].name, tmp[k].x1, tmp[k].y1, tmp[k].x2, tmp[k].y2, tmp[k].perimeter, tmp[k].area);
 		}
 	}
+
+	float temp1;
+	int	flag1 = 1;
+
+	for(int i=0; i<nL-1 && flag1==1; i++) 
+	{
+		flag1 = 0;
+
+		for (int j=0; j<nL-i; j++)
+		{
+			if (tmp[j].perimeter > tmp[j+1].perimeter) 
+			{
+				flag1 = 1;
+				
+				temp1 = tmp[j].perimeter;
+				tmp[j].perimeter = tmp[j+1].perimeter;
+				tmp[j+1].perimeter = temp1;
+			}
+		}
+	}
+
+	float temp2;
+	int flag2 = 1;
+
+	for(int i=0; i<nL-1 && flag2==1; i++) 
+	{
+		flag2 = 0;
+
+		for (int j=0; j<nL-i; j++)
+		{
+			if (tmp[j].area > tmp[j+1].area) 
+			{
+				flag2 = 1;
+				
+				temp2 = tmp[j].area;
+				tmp[j].area = tmp[j+1].area;
+				tmp[j+1].area = temp2;
+			}
+		}
+	}
+
+
+  FILE *f2;
+  FILE *f3;
+	//wrong
+	f2 = open_file("filePertmeter.txt", "w");
+	f3 = open_file("fileArea.txt", "w");
+
+	printf("------------------------------------------------------------------------------------------------\n");
+	printf("\nName\tPerimeter\tArea\n");
+	printf("------------------------------------------------------------------------------------------------\n");
+	for(int k = 0; k<(nL); k++){	
+		if (tmp[k].x1 == 0 && tmp[k].x1 == 0 && tmp[k].x1 == 0 && tmp[k].x1 == 0){
+			printf("%s\t%f\t%f\n", tmp[k].name, tmp[k].perimeter, tmp[k].area);
+			//print on files
+			fprintf(f2, "%s\t%f\n", tmp[k].name, tmp[k].perimeter);
+			fprintf(f3, "%s\t%f\n", tmp[k].name, tmp[k].area);
+		}
+	}
+	fclose(f2);
+	fclose(f3);
 }
 
 int file_num_of_line_completed(char *filename, char *mode){
@@ -140,3 +202,4 @@ FILE *open_file(char *filename, char *mode) {
 
   return f;
 }
+

@@ -1,0 +1,229 @@
+==6496== Memcheck, a memory error detector
+==6496== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==6496== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
+==6496== Command: ./program fileIn.txt fileArea.txt filePerimeter.txt
+==6496== Parent PID: 6494
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x484745C: strcmp (vg_replace_strmem.c:863)
+==6496==    by 0x401443: scan_file (client.c:73)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x401446: scan_file (client.c:73)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x401A1F: scan_file (client.c:111)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BE408: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BE422: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BA35A: __mpn_extract_double (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48BE6CE: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BA35F: __mpn_extract_double (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48BE6CE: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF06D: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF099: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF0D4: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF108: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF36E: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF5BD: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF5A3: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48EDBED: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48BFE89: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Syscall param write(buf) points to uninitialised byte(s)
+==6496==    at 0x495C387: write (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48EC78C: _IO_file_write@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48EBB05: new_do_write (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48ED828: _IO_do_write@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48ECDD5: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D72CF: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3B7E: printf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401DEE: scan_file (client.c:154)
+==6496==    by 0x401212: main (client.c:30)
+==6496==  Address 0x4a3e577 is 7 bytes inside a block of size 1,024 alloc'd
+==6496==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==6496==    by 0x48E0263: _IO_file_doallocate (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48EEB6F: _IO_doallocbuf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48EDD27: _IO_file_overflow@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48ECDD5: _IO_file_xsputn@@GLIBC_2.2.5 (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D6DE5: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401F67: file_num_of_line_completed (client.c:177)
+==6496==    by 0x4012A6: scan_file (client.c:55)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BE408: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BE422: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BA35A: __mpn_extract_double (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48BE6CE: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BA35F: __mpn_extract_double (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48BE6CE: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF06D: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF099: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF0D4: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF108: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF36E: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF5BD: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== Conditional jump or move depends on uninitialised value(s)
+==6496==    at 0x48BF5A3: __printf_fp_l (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48D8797: __vfprintf_internal (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x48C3AA9: fprintf (in /usr/lib64/libc-2.33.so)
+==6496==    by 0x401E59: scan_file (client.c:156)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== 
+==6496== HEAP SUMMARY:
+==6496==     in use at exit: 101 bytes in 1 blocks
+==6496==   total heap usage: 11 allocs, 10 frees, 19,869 bytes allocated
+==6496== 
+==6496== 101 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==6496==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==6496==    by 0x401F90: malloc_ck (client.c:185)
+==6496==    by 0x401F10: file_num_of_line_completed (client.c:169)
+==6496==    by 0x4012A6: scan_file (client.c:55)
+==6496==    by 0x401212: main (client.c:30)
+==6496== 
+==6496== LEAK SUMMARY:
+==6496==    definitely lost: 101 bytes in 1 blocks
+==6496==    indirectly lost: 0 bytes in 0 blocks
+==6496==      possibly lost: 0 bytes in 0 blocks
+==6496==    still reachable: 0 bytes in 0 blocks
+==6496==         suppressed: 0 bytes in 0 blocks
+==6496== 
+==6496== Use --track-origins=yes to see where uninitialised values come from
+==6496== For lists of detected and suppressed errors, rerun with: -s
+==6496== ERROR SUMMARY: 168 errors from 28 contexts (suppressed: 0 from 0)
