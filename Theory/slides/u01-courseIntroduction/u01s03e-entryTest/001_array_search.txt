@@ -1,0 +1,43 @@
+--- TEX
+Given the following array of increasing integer values, use a binary search to look-for the value 45. 
+--- DAT
+ 0  6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+--- SOL
+### Linear and binary search
+Linear search on unordered array
+(searching value 45 on 17 elements)
+ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 
+---------------------------------------------------
+ 0  6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+ 0  6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+    6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+       8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+         15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+            16 20 20 24 25 28 30 34 36 40 41 45 50 
+               20 20 24 25 28 30 34 36 40 41 45 50 
+                  20 24 25 28 30 34 36 40 41 45 50 
+                     24 25 28 30 34 36 40 41 45 50 
+                        25 28 30 34 36 40 41 45 50 
+                           28 30 34 36 40 41 45 50 
+                              30 34 36 40 41 45 50 
+                                 34 36 40 41 45 50 
+                                    36 40 41 45 50 
+                                       40 41 45 50 
+                                          41 45 50 
+                                             45 50 
+Number 45 found in position 15.
+Binary search on ORDERED array
+(searching value 45 on 17 elements)
+ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 
+---------------------------------------------------
+ 0  6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+ 0  6  8 15 16 20 20 24 25 28 30 34 36 40 41 45 50 
+                           28 30 34 36 40 41 45 50 
+                                       40 41 45 50 
+                                             45 50 
+Number 45 found in position 15.
+--- QUERY
+.query Report the sequence of all values visited by the procedure (included the one searched, if it is found). Please, indicate the response as a sequence of integer values separated by a single space (e.g., 23 32 47). No other symbols must be included in the response.
+--- RES
+.res 25 36 41 45
+--- END

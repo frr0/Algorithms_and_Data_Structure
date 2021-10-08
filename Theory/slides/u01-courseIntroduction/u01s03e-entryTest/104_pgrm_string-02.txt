@@ -1,0 +1,19 @@
+--- TEX
+A string has an undefined length and it includes all possible characters.
+
+Write a non-recursive function that receives such a string as a parameter and it computes the length of the longest sub-sequence made only of small alphabetic characters and the length of the longest sub-sequence made only of decimal digits.
+
+The function prototype is the following:
+void substring (char *str, int *letter, int *digit);
+where str is the string received by the function and letter and digit are the two integers, passed by reference, which represent the desired return values.
+
+For example, if the input string is "This is 1 string inclUding diGIts: 12345 678 9", the longest sequence of consecutive small characters is "string" and the longest sequence of digits is "12345" (please, notice that spaces are neither alphabetic characters nor digits). Thus, the program must assign and return letter equal to 6 and digit equal to 5.
+--- DAT
+
+--- SOL
+--- QUERY
+.query Please, report the entire C code of the function. Briefly explain (in plain English language, within a C comment) the logic of the code.
+--- RES
+.res
+
+--- END

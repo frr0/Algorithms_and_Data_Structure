@@ -1,0 +1,16 @@
+--- TEX
+A palindrome string is one that reads the same backward as well as forward. For example, the strings "aba" and "123a321" are palindrome. A substring of a string is a contiguous sequence of characters extracted from the original string. Thus, "3a3" is a substring of "123a321".
+
+Write a non-recursive function called palindrome which receives a string str of unknown length and it returns the length of the longest palindrome substring of str.
+For example, if str="1234554abccbaxxYY" the longest palindrome substring of str is "abccba". Thus, the function must return 6. If there is not a palindrome substring in str the function must return the value 0.
+
+The function prototype is the following:
+--- DAT
+int palindrome (char *str);
+--- SOL
+--- QUERY
+.query  Please, report the entire C code and explain (in plain English language) the logic of the code.
+--- RES
+.res
+
+--- END

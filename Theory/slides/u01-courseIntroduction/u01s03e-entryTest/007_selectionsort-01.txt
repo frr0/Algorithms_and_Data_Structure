@@ -1,0 +1,26 @@
+--- TEX
+Given the following array of integer values, sort it in descending order using the selection sort procedure.
+--- DAT
+ 1  4  8 -11  5  3  1  7  4  3  2 12 15 
+--- SOL
+### Selection sort
+    0  1  2  3  4  5  6  7  8  9 10 11 12 
+V:  1  4  8 -11  5  3  1  7  4  3  2 12 15 
+------------------------------------------
+V: 15  4  8 -11  5  3  1  7  4  3  2 12  1 
+V: 15 12  8 -11  5  3  1  7  4  3  2  4  1 
+V: 15 12  8 -11  5  3  1  7  4  3  2  4  1 
+V: 15 12  8  7  5  3  1 -11  4  3  2  4  1 
+V: 15 12  8  7  5  3  1 -11  4  3  2  4  1 
+V: 15 12  8  7  5  4  1 -11  3  3  2  4  1 
+V: 15 12  8  7  5  4  4 -11  3  3  2  1  1 
+V: 15 12  8  7  5  4  4  3 -11  3  2  1  1 
+V: 15 12  8  7  5  4  4  3  3 -11  2  1  1 
+V: 15 12  8  7  5  4  4  3  3  2 -11  1  1 
+V: 15 12  8  7  5  4  4  3  3  2  1 -11  1 
+V: 15 12  8  7  5  4  4  3  3  2  1  1 -11 
+--- QUERY
+.query Display the content of the array just after 6 iterations of the main (outer) loop (i.e., before iteration number 7). Please, show the entire content of the array as a sequence of integer values separated by a single space. No other symbols must be included in the response. This is an example of the response: 0 3 0 6 8 etc.
+--- RES
+.res 15 12  8  7  5  4  1 -11  3  3  2  4  1
+--- END

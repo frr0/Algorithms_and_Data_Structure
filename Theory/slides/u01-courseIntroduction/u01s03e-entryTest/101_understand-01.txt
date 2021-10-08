@@ -1,0 +1,34 @@
+--- TEX
+The following function myf is called with the string in storing "This is a very loooong string", and with the string out and the value n undefined.
+--- DAT
+void myf (char *in, char *out, int *n) {
+  char *tmp1, *tmp2;
+  int l;
+  
+  out[0] = '\0';
+  tmp1 = in;
+  while (*tmp1!='\0') {
+    while (*tmp1==' ') {
+      tmp1++; 
+    }
+    tmp2 = tmp1;
+    while (*tmp2!=' ' && *tmp2!='\0') {
+      tmp2++; 
+    }
+    l = tmp2 - tmp1;
+    if (l > strlen(out)) {
+      *n=l;
+      strncpy (out, tmp1, l);
+      out[l] = '\0';
+    }
+    tmp1=tmp2;
+  }
+
+  return;
+}
+--- SOL
+--- QUERY
+.query Specify the value of the string out and the integer n returned by the function. Please, report out and n on the same line separated by one single space. No other symbols must be included in the response. This is an example of the response: abcd 12
+--- RES
+.res loooong 7
+--- END

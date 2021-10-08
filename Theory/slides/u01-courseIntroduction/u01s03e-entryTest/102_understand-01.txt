@@ -1,0 +1,23 @@
+--- TEX
+The following function receives as input paramter s, the string ``This 12345 is a string''.
+--- DAT
+void f (char *s) {
+  int i, j;
+
+  i = 0;
+  while (i < strlen(s)) {
+    if (s[i]==' ' || (s[i]>='0' && s[i]<='9')) {
+      for (j=i+1; j<strlen(s)+1; j++) s[j-1] = s[j];
+   } else {
+      i = i + 1;
+    }
+  }
+
+  return;
+}
+--- SOL
+--- QUERY
+.query Which is the string it returns (e.g, abc)?
+--- RES
+.res Thisisastring
+--- END

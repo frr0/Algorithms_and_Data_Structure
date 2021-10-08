@@ -1,0 +1,21 @@
+--- TEX
+The following sequence of pairs is given. Each relation i-j means that node i is adjacent to node j. Node names are integer values within the range from 0 to 9.
+--- DAT
+3-1 4-1 1-6 0-4 3-9 6-9 5-0 
+--- SOL
+### quick union
+                         0  1  2  3  4  5  6  7  8  9 
+------------------------------------------------------
+                         0  1  2  3  4  5  6  7  8  9 
+ 3- 1 {[ 3]below[ 1]}    0  1  2  1  4  5  6  7  8  9 
+ 4- 1 {[ 4]below[ 1]}    0  1  2  1  1  5  6  7  8  9 
+ 1- 6 {[ 1]below[ 6]}    0  6  2  1  1  5  6  7  8  9 
+ 0- 4 {[ 0]below[ 4]}    6  6  2  1  1  5  6  7  8  9 
+ 3- 9 {[ 6]below[ 9]}    6  6  2  1  1  5  9  7  8  9 
+ 6- 9 No change          6  6  2  1  1  5  9  7  8  9 
+ 5- 0 {[ 5]below[ 0]}    6  6  2  1  1  9  9  7  8  9 
+--- QUERY
+.query Apply an online connectivity algorithm based on quick-union. Please, show the content of the array at the end of the entire process as a sequence of integer values separated by a single space. No other symbols must be included in the response.  This is an example of the response: 0 3 0 6 8 etc.
+--- RES
+.res 6 6 2 1 1 9 9 7 8 9
+--- END

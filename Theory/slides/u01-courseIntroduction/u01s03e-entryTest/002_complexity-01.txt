@@ -1,0 +1,23 @@
+--- TEX
+Given the following C code function:
+--- DAT
+void sort (int **m, int R, int C) {
+  int i, j, k, t;
+  for (i=0; i<R; i++) {
+    for (j=0; j<C-1; j++) {
+      for (k=0; k<C-j-1; k++) {
+	     if (m[i][j]>m[i][j+1]) {
+	       t = m[i][j]; m[i][j] = m[i][j+1]; m[i][j+1] = t;
+        }
+      }
+    }
+  }
+return;
+}
+--- SOL
+--- QUERY
+.query Evaluate its complexity in terms of number of total operations. Please, report all intermediate computational steps required to reach the result. Moreover, clearly state the final asymptotic complexity of the algorithm. Appropriately motivare computational steps and results. Notice that this is an open question, and it will be maually evaluated.
+--- RES
+.res
+
+--- END
