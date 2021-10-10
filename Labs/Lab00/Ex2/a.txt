@@ -33,7 +33,6 @@ Example
 Let us suppose that the program receives the following three parameters:
 fileIn.txt fileArea.txt filePerimeter.txt
 
-Moreover, let us suppose that the content of fileIn.txt is the following:
 
 rct2  1.5 3.5
 xxyy  -0.5 3.0
