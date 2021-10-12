@@ -1,3 +1,0 @@
-### Dinaminc memory allocation
-
-
