@@ -4,7 +4,6 @@
 int main(int argc, char *argv[]) {
   int n1 = 0;
   int n2= 0;
-  int n3 =0;
 
   
   arg_check(argc, argv);

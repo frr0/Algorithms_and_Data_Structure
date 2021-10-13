@@ -1,0 +1,36 @@
+==858535== Memcheck, a memory error detector
+==858535== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==858535== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
+==858535== Command: ./program fileIn.txt fileArea.txt filePerimeter.txt
+==858535== Parent PID: 858533
+==858535== 
+==858535== Conditional jump or move depends on uninitialised value(s)
+==858535==    at 0x484745C: strcmp (vg_replace_strmem.c:863)
+==858535==    by 0x401444: scan_file (client.c:72)
+==858535==    by 0x401212: main (client.c:30)
+==858535== 
+==858535== Conditional jump or move depends on uninitialised value(s)
+==858535==    at 0x401447: scan_file (client.c:72)
+==858535==    by 0x401212: main (client.c:30)
+==858535== 
+==858535== 
+==858535== HEAP SUMMARY:
+==858535==     in use at exit: 360 bytes in 1 blocks
+==858535==   total heap usage: 8 allocs, 7 frees, 15,088 bytes allocated
+==858535== 
+==858535== 360 bytes in 1 blocks are definitely lost in loss record 1 of 1
+==858535==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==858535==    by 0x401D9C: malloc_ck (client.c:155)
+==858535==    by 0x4012CD: scan_file (client.c:56)
+==858535==    by 0x401212: main (client.c:30)
+==858535== 
+==858535== LEAK SUMMARY:
+==858535==    definitely lost: 360 bytes in 1 blocks
+==858535==    indirectly lost: 0 bytes in 0 blocks
+==858535==      possibly lost: 0 bytes in 0 blocks
+==858535==    still reachable: 0 bytes in 0 blocks
+==858535==         suppressed: 0 bytes in 0 blocks
+==858535== 
+==858535== Use --track-origins=yes to see where uninitialised values come from
+==858535== For lists of detected and suppressed errors, rerun with: -s
+==858535== ERROR SUMMARY: 111 errors from 3 contexts (suppressed: 0 from 0)

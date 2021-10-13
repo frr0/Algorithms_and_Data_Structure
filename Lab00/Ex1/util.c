@@ -25,10 +25,16 @@ FILE *open_file(char *filename, char *mode) {
 void read_words(char *filename, char *mode, int N) {
   name_t name[T];
   FILE *f;
+  FILE *fo;
   char __word[II];
+  char *line;
+  /** char *word; */
 
   /** __word = malloc_ck(II * sizeof(char)); */
   f = open_file(filename, "r");
+  fo = open_file("f1.txt", "r");
+  line = malloc_ck(C * sizeof(char));
+  /** word = malloc_ck(C * sizeof(char)); */
 
   for (int i=0; i<3; i++){
     fscanf(f, "%s", __word);
@@ -38,8 +44,24 @@ void read_words(char *filename, char *mode, int N) {
     }
     /** printf("in __word: %s\n", __word); */
     strcpy(name[i].word, __word);
-    printf("nella struct: %s\n", name[i].word);
+    /** printf("nella struct: %s\n", name[i].word); */
   }
+
+  while(fgets(line, C, f) != NULL) {
+    for(int i = 0; line[i]; i++){
+      line[i] = tolower(line[i]);
+    }
+    for(int i=0; i<3; i++){
+      if((strstr(line, name[i].word)) != NULL) {
+        name[i].occurrences++;
+      }
+    }
+   }
+  for (int k=0; k<3; k++){
+    /** printf("%s: occurs %d times\n", name[k].word, name[k].occurrences); */
+  }
+
+
   fclose(f);
 }
 
@@ -60,20 +82,20 @@ void Search_words(char *filename, char *mode, int N) {
     name[i].occurrences = 0;
   }
 
-  while (fgets(line, C, f) != NULL) {
-    string = line;
-    while (sscanf(string, "%s", word) > 0) {
-      for (i = 0; i < 3; i++) {
-        if (strcmp(word, name[i].word) == 0) {
-          name[i].occurrences++;
-        }
+  while(fgets(line, C, f) != NULL) {
+    for(int i=0; i<3; i++){
+      for(int i = 0; line[i]; i++){
+        line[i] = tolower(line[i]);
       }
-      string = string + strlen(word);
+      if((strstr(line, name[i].word)) != NULL) {
+        name[i].occurrences++;
+      }
     }
-  }
+   }
 
+  printf("\n");
   for (int k=0; k<3; k++){
-    printf("%s: occurs %d times\n", name[i].word, name[i].occurrences);
+    printf("%s: occurs %d times\n", name[k].word, name[k].occurrences);
   }
 
   fclose(f);

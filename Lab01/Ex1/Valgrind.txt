@@ -1,0 +1,86 @@
+==9777== Memcheck, a memory error detector
+==9777== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==9777== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
+==9777== Command: ./program f1.txt f2.txt
+==9777== Parent PID: 9769
+==9777== 
+==9777== Use of uninitialised value of size 8
+==9777==    at 0x484B2D4: strstr (vg_replace_strmem.c:1666)
+==9777==    by 0x401617: Search_words (clientB.c:133)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777== 
+==9777== Invalid read of size 1
+==9777==    at 0x484B2D4: strstr (vg_replace_strmem.c:1666)
+==9777==    by 0x401617: Search_words (clientB.c:133)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777==  Address 0x800000003 is not stack'd, malloc'd or (recently) free'd
+==9777== 
+==9777== 
+==9777== Process terminating with default action of signal 11 (SIGSEGV): dumping core
+==9777==  Access not within mapped region at address 0x800000003
+==9777==    at 0x484B2D4: strstr (vg_replace_strmem.c:1666)
+==9777==    by 0x401617: Search_words (clientB.c:133)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777==  If you believe this happened as a result of a stack
+==9777==  overflow in your program's main thread (unlikely but
+==9777==  possible), you can try to increase the size of the
+==9777==  main thread stack using the --main-stacksize= flag.
+==9777==  The main thread stack size used in this run was 8388608.
+==9777== 
+==9777== HEAP SUMMARY:
+==9777==     in use at exit: 1,411 bytes in 9 blocks
+==9777==   total heap usage: 12 allocs, 3 frees, 10,075 bytes allocated
+==9777== 
+==9777== 63 bytes in 3 blocks are definitely lost in loss record 1 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x40135D: read_words (clientB.c:79)
+==9777==    by 0x40122E: main (clientB.c:37)
+==9777== 
+==9777== 101 bytes in 1 blocks are still reachable in loss record 2 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x4016EA: malloc_ck (clientB.c:150)
+==9777==    by 0x40153A: Search_words (clientB.c:119)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777== 
+==9777== 101 bytes in 1 blocks are still reachable in loss record 3 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x4016EA: malloc_ck (clientB.c:150)
+==9777==    by 0x401548: Search_words (clientB.c:120)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777== 
+==9777== 101 bytes in 1 blocks are still reachable in loss record 4 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x4016EA: malloc_ck (clientB.c:150)
+==9777==    by 0x401556: Search_words (clientB.c:121)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777== 
+==9777== 101 bytes in 1 blocks are definitely lost in loss record 5 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x4016EA: malloc_ck (clientB.c:150)
+==9777==    by 0x401329: read_words (clientB.c:74)
+==9777==    by 0x40122E: main (clientB.c:37)
+==9777== 
+==9777== 472 bytes in 1 blocks are still reachable in loss record 6 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x48E0CDE: __fopen_internal (in /usr/lib64/libc-2.33.so)
+==9777==    by 0x4012A4: open_file (clientB.c:53)
+==9777==    by 0x40131B: read_words (clientB.c:73)
+==9777==    by 0x40122E: main (clientB.c:37)
+==9777== 
+==9777== 472 bytes in 1 blocks are still reachable in loss record 7 of 7
+==9777==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==9777==    by 0x48E0CDE: __fopen_internal (in /usr/lib64/libc-2.33.so)
+==9777==    by 0x4012A4: open_file (clientB.c:53)
+==9777==    by 0x40156B: Search_words (clientB.c:122)
+==9777==    by 0x401249: main (clientB.c:39)
+==9777== 
+==9777== LEAK SUMMARY:
+==9777==    definitely lost: 164 bytes in 4 blocks
+==9777==    indirectly lost: 0 bytes in 0 blocks
+==9777==      possibly lost: 0 bytes in 0 blocks
+==9777==    still reachable: 1,247 bytes in 5 blocks
+==9777==         suppressed: 0 bytes in 0 blocks
+==9777== 
+==9777== Use --track-origins=yes to see where uninitialised values come from
+==9777== For lists of detected and suppressed errors, rerun with: -s
+==9777== ERROR SUMMARY: 4 errors from 4 contexts (suppressed: 0 from 0)
