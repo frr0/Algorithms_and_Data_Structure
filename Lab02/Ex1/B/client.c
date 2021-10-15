@@ -4,60 +4,57 @@
 
 #define C 100+1
 
-struct string {
-  char *str;
-};
-
 void check_args(int argc, char *argv[]);
-struct string *scan_file(int args, char *argv[], int *n_lines, FILE **f2);
+char **scan_file(int args, char *argv[], int *n_lines, FILE **f2);
 FILE *open_file(char *filename, char *mode);
-void order(struct string *w, int nlines);
+char **order(char **mat, int nlines);
 
 int main(int argc, char *argv[]) {
-  struct string *wrd;
   int nlines;
   FILE *f2;
+  char **mat;
 
   check_args(argc, argv);
-  wrd = scan_file(argc, argv, &nlines, &f2);
+  mat = scan_file(argc, argv, &nlines, &f2);
   for (int i=0; i<nlines; i++){
-    printf("%s\n", wrd[i].str);
+    printf("%s\n", mat[i]);
   }
-  order(wrd, nlines);
+  mat = order(mat, nlines);
   printf("\n");
   for (int i=0; i<nlines; i++){
-    printf("%s\n", wrd[i].str);
-    fprintf(f2, "%s\n", wrd[i].str);
+    printf("%s\n", mat[i]);
+    fprintf(f2, "%s\n", mat[i]);
   }
   return 0;
 }
 
 void check_args(int argc, char *argv[]){
-  if (argc != 3) // checking argc
-  {
+  if (argc != 3) {
     printf("Error, not 3 args");
     exit(-1);
   }
 }
 
-struct string *scan_file(int args, char *argv[], int *n_lines, FILE **f2){
+char **scan_file(int args, char *argv[], int *n_lines, FILE **f2){
   FILE *f1;
   *n_lines = 0;
+  char **mat;
 
   f1 = open_file(argv[1], "r");
   *f2 = open_file(argv[2], "w");
   fscanf(f1, "%d", n_lines);
   printf("%d\n", *n_lines);
 
-  struct string *word;
-    word = malloc(*n_lines * sizeof(struct string));
+  mat = malloc(*n_lines * sizeof(char*));
+  for (int i=0; i<*n_lines; i++){
+    mat[i] = malloc(C * sizeof(char));
+  }
 
   for (int i=0; i<*n_lines; i++){
-    word[i].str = malloc(C * sizeof(char));
-    fscanf(f1, "%s", word[i].str);
-    /** printf("%s\n", word[i].str); */
+    fscanf(f1, "%s", mat[i]);
+    /** printf("%s\n", mat[i]); */
   }
-  return word;
+  return mat;
 }
 
 FILE *open_file(char *filename, char *mode){
@@ -69,19 +66,20 @@ FILE *open_file(char *filename, char *mode){
   return f;
 }
 
-void order(struct string *w, int nlines){
+char **order(char **mat, int nlines){
   char temp[C];
 
   for (int i=0; i<nlines-1; i++) {
     for (int j=0; j<nlines-i-1; j++) {
-      if (strcmp(w[j].str, w[j+1].str) > 0) {
-        strcpy(temp, w[j].str);
-        strcpy(w[j].str, w[j+1].str);
-        strcpy(w[j+1].str, temp);
+      if (strcmp(mat[j], mat[j+1]) > 0) {
+        strcpy(temp, mat[j]);
+        strcpy(mat[j], mat[j+1]);
+        strcpy(mat[j+1], temp);
       }
     }
   }
   for (int i=0; i<nlines; i++){
-    printf("%s\n", w[i].str);
+    /** printf("%s\n", mat[i]); */
   }
+  return mat;
 }
