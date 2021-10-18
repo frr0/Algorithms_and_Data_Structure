@@ -6,7 +6,7 @@ genova
 milano
 napoli
 palermo
+roma
 taranto
 torino
 venezia
-

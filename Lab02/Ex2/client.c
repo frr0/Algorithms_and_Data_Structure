@@ -65,10 +65,10 @@ char ***order(char ***mat, int rr, int cc){
   FILE *f2 = fopen("f2.txt", "w");
   int n = (rr*cc);
   char aa[2] = {"~"};
-  char A[3][XX];
-  char B[3][XX];
-  char C[3][XX];
-  char D[3][XX];
+  char A[cc][XX];
+  char B[cc][XX];
+  char C[cc][XX];
+  char D[cc][XX];
   /** char **A; */
   /** char **B; */
   /** char **C; */
@@ -121,8 +121,8 @@ char ***order(char ***mat, int rr, int cc){
     if ((strcmp(A[a], B[b]) < 0) && (strcmp(A[a], C[c]) < 0) && (strcmp(A[a], D[d]) < 0)) {
       strcpy(E[i], A[a]);
       strcpy(A[a], aa);
-      if (a < 2) a++; 
-      else strcpy(A[a], aa); 
+      if (a < cc-1) a++; 
+      /** else strcpy(A[a], aa);  */
 
       printf("%s\n", E[i]);
       printf("in vector e %d\n", i);
@@ -131,8 +131,8 @@ char ***order(char ***mat, int rr, int cc){
     } else if ((strcmp(B[b], A[a]) < 0) && (strcmp(B[b], C[c]) < 0) && (strcmp(B[b], D[d]) < 0)){
       strcpy(E[i], B[b]); 
       strcpy(B[b], aa);
-      if (b < 2) b++;
-      else strcpy(B[b], aa); 
+      if (b < cc-1) b++;
+      /** else strcpy(B[b], aa);  */
 
       printf("%s\n", E[i]);
       printf("in vector e %d\n", i);
@@ -141,8 +141,8 @@ char ***order(char ***mat, int rr, int cc){
     } else if ((strcmp(C[c], A[a]) < 0) && (strcmp(C[c], B[b]) < 0) && (strcmp(C[c], D[d]) < 0)){
       strcpy(E[i], C[c]);
       strcpy(C[c], aa);
-      if (c < 2) c++;
-      else strcpy(C[c], aa); 
+      if (c < cc-1) c++;
+      /** else strcpy(C[c], aa);  */
 
       printf("%s\n", E[i]);
       printf("in vector e %d\n", i);
@@ -151,8 +151,8 @@ char ***order(char ***mat, int rr, int cc){
     } else if ((strcmp(D[d], A[a]) < 0) && (strcmp(D[d], B[b]) < 0) && (strcmp(D[d], C[c]) < 0)){
       strcpy(E[i], D[d]); 
       strcpy(D[d], aa);
-      if (d < 2) d++;
-      else strcpy(C[c], aa); 
+      if (d < cc-1) d++;
+      /** else strcpy(C[c], aa);  */
 
       printf("%s\n", E[i]);
       printf("in vector e %d\n", i);
