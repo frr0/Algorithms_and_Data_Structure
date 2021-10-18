@@ -1,5 +1,5 @@
 4 3
 milano torino venezia
 bari genova taranto
-firenze napoli pala
+firenze napoli roma
 bologna cagliari palermo

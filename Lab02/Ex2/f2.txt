@@ -5,8 +5,8 @@ firenze
 genova
 milano
 napoli
-pala
-
-
-
+palermo
+taranto
+torino
+venezia
 
