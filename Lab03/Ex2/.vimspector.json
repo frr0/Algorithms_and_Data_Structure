@@ -5,7 +5,7 @@
             "configuration": {
                 "request": "launch",
                 "program": "${workspaceRoot}/program",
-                "args": ["f1.txt", "---+"],
+                "args": ["f1.txt","Giallo_Antonio", "---+"],
                 "cwd": "${workspaceRoot}",
                 "environment": [],
                 "externalConsole": true,

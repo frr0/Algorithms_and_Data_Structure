@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 }
 
 void args_check(int argc, char *argv[]){
-  if (argc != 3){
+  if (argc != 4){
     perror("args error, not 3");
     exit(-1);
   }
@@ -143,7 +143,7 @@ void display (employee_t *head) {
     head->next->next->next->name);
   printf("\n");
   printf("head->next->next->next->name (fourth in list): %s\n",
-      head->next->next->next->name);
+    head->next->next->next->name);
   printf("head->next->next->next->prev->name (third in list): %s\n",
     head->next->next->next->prev->name);
   printf("head->next->next->next->prev->prev->name (second in list): %s\n",
@@ -153,9 +153,9 @@ void display (employee_t *head) {
   printf("\n");
 
   while (head != NULL) {
-    printf("%s\n", head->name);
-    printf("%s\n", head->id);
-    printf("%d.%d.%d\n", head->d, head->m, head->y);
+    printf("%s ", head->name);
+    printf("%s ", head->id);
+    printf("%d.%d.%d ", head->d, head->m, head->y);
     printf("%d\n", head->salary);
     head = head->next;
   }
@@ -163,95 +163,53 @@ void display (employee_t *head) {
 void print (employee_t *head, int argc, char *argv[]) {
   employee_t *e = head;
   char ss[L];
+  char sn[L];
+  int i = 0;
 
   printf("\nprint function\n\n");
 
-  sscanf(argv[2], "%s", ss);
-  printf("%s\n", ss);
+  sscanf(argv[3], "%s", ss);
+  sscanf(argv[2], "%s", sn);
+  printf("Pattern: %s\n", ss);
+  printf("Name: %s\n\n", sn);
 
-  for (int i=0; i<strlen(ss); i++) {
-    if(ss[i] == 45){
-      printf("%s\n", e->prev->name);
-      printf("%s\n", e->prev->id);
-      printf("%d.%d.%d\n", e->prev->d, e->prev->m, e->prev->y);
-      printf("%d\n", e->prev->salary);
-    } else if (ss[i] == 43){
-      printf("%s\n", e->next->name);
-      printf("%s\n", e->next->id);
-      printf("%d.%d.%d\n", e->next->d, e->next->m, e->next->y);
-      printf("%d\n", e->next->salary);
+  while (e != NULL) {
+    if (strcmp(sn, e->name) == 0) {
+      printf("%s ", e->name);
+      printf("%s ", e->id);
+      printf("%d.%d.%d ", e->d, e->m, e->y);
+      printf("%d\n", e->salary);
+      while (i<strlen(ss)) {
+        if (e->prev == NULL && ss[i] != 43){
+          printf("%s ", e->name);
+          printf("%s ", e->id);
+          printf("%d.%d.%d ", e->d, e->m, e->y);
+          printf("%d\n", e->salary);
+          i++;
+        } else if (e->next == NULL && ss[i]!= 45) {
+          printf("%s ", e->name);
+          printf("%s ", e->id);
+          printf("%d.%d.%d ", e->d, e->m, e->y);
+          printf("%d\n", e->salary);
+          i++;
+        } else if(ss[i] == 45){ /** 45 is "-" */
+          printf("%s ", e->prev->name);
+          printf("%s ", e->prev->id);
+          printf("%d.%d.%d ", e->prev->d, e->prev->m, e->prev->y);
+          printf("%d\n", e->prev->salary);
+          e = e->prev;
+          i++;
+        } else if (ss[i] == 43){ /** 43 is "+" */
+          printf("%s ", e->next->name);
+          printf("%s ", e->next->id);
+          printf("%d.%d.%d ", e->next->d, e->next->m, e->next->y);
+          printf("%d\n", e->next->salary);
+          e = e->next;
+          i++;
+        }
+      }
+      if (i == strlen(ss)){ return; }
     }
+    e = e->next;
   }
 }
-
-/** Exercise 02 */
-/** ----------- */
-/**  */
-/** A file contains data on a set of employees. */
-/** For each employee there is a row of the file, including: */
-/** * Last and first name (a single C string, maximum 50 characters, */
-/**   e.g., Smith_John). */
-/** * Personal identification (exactly 16 characters). */
-/** * Data of hiring (format dd.mm.yyy, e.g, 30.05.2005). */
-/** * Salary (integer value, in euro). */
-/** Fields are space-separated. */
-/** Employees do not appear in any specific order. */
-/**  */
-/** A C program receives 3 parameters on the command line: */
-/** * Input file name (the format is the previously defined one). */
-/** * A single strings, representing a last and first name pair (e.g., */
-/**   Clinton_Bill). */
-/** * A string made of only + and - characters (e.g., +++---+-+). */
-/**  */
-/** The program has to: */
-/** * Read the file. */
-/** * Store its content in a LIFO-logic list, but with two pointers for */
-/**   each element one pointing ahead and one pointing behind the element */
-/**   itself as: */
-/**  */
-/**   pHead  --> ----- --> ----- --> ----- --> ----- -X */
-/**              |###|     |###|     |###|     |###| */
-/**           X- ----- <-- ----- <-- ----- <-- ----- */
-/**  */
-/** * Find in the list the element storing the employee whose name is */
-/** * passed on the command line as a second parameter. */
-/** * Move along the list in the */
-/**   - right direction for each '+' character */
-/**   - left direction for each '-' character */
-/**   in the third string parameter. */
-/**   For each visited node of the list (including the first one) the */
-/**   program has to print out (on standard output) all data of the */
-/**   employee (with the same format this data appears in the original */
-/**   input file). */
-/**   If the end of the list is reached (in either side) the program has to */
-/**   print-out the same element repeatedly. */
-/**  */
-/** Example */
-/** ------- */
-/**  */
-/** Let the command line parameters be the following */
-/**  */
-/** file.txt Giallo_Antonio ---+ */
-/**  */
-/** and the file be the following */
-/**  */
-/** Rossi_Alberto AAABBBCCDEEFGGGH 03.12.1998 1845 */
-/** Giallo_Antonio AAABBBCCDEEFGGGH 13.11.2007 1140 */
-/** Verdi_Federica AAABBBCCDEEFGGGH 25.09.1989 2157 */
-/** Bianchi_Elena AAABBBCCDEEFGGGH 15.02.2004 1345 */
-/**  */
-/** The file has to be stored in the LIFO structure as: */
-/** Bianchi  ->  Verdi  -> Giallo  -> Rossi   */
-/** Then, the program has to: */
-/** - find Giallo_Antonio in the list and print its data */
-/** - move let on Verdi and print its data (first -) */
-/** - move left again and print Bianchi (second -) */
-/** - do not move and print Bianchi again (third -) */
-/** - move right and print Verdi (first +): */
-/**  */
-/** Giallo_Antonio AAABBBCCDEEFGGGH 13.11.2007 1140 */
-/** Verdi_Federica AAABBBCCDEEFGGGH 25.09.1989 2157 */
-/** Bianchi_Elena AAABBBCCDEEFGGGH 15.02.2004 1345 */
-/** Bianchi_Elena AAABBBCCDEEFGGGH 15.02.2004 1345 */
-/** Verdi_Federica AAABBBCCDEEFGGGH 25.09.1989 2157 */
-/**  */
