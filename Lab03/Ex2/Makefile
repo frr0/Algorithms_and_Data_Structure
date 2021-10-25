@@ -1,5 +1,5 @@
 target:
-	gcc -Wall -g -o program client.c && ./program 
+	gcc -Wall -g -o program client.c && ./program f1.txt ---+
 
 clean:
 	rm -rf program

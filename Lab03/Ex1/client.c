@@ -14,14 +14,16 @@ struct list_s {
 };
 
 void args_check(int argc, char *argv[]);
-list_t *scan_file(int argc, char *argv[]);
+list_t *scan_file(list_t *head, int argc, char *argv[]);
+list_t *insert (list_t *head, char *word); 
 FILE *file_open(char *filename, char *mode);
+void display (list_t *head);
 
 int main(int argc, char *argv[]) {
-  list_t *w;
+  list_t *w = NULL;
 
   args_check(argc, argv);
-  w = scan_file(argc, argv);
+  w = scan_file(w, argc, argv);
   
 
   return 0;
@@ -34,30 +36,69 @@ void args_check(int argc, char *argv[]){
   }
 }
 
-list_t *scan_file(int argc, char *argv[]){
-  list_t *ww;
+list_t *scan_file(list_t *head, int argc, char *argv[]){
+  list_t *ww = NULL;
   int n = 0;
+  int m = 0;
+  int i = 0;
+  int found = 0;
   char *str;
   char *word;
   FILE *f1 = file_open(argv[1], "r");
-  FILE *f2 = file_open(argv[2], "w");
+  /** FILE *f2 = file_open(argv[2], "w"); */
 
   str = malloc(M * sizeof(char));
   word = malloc(M * sizeof(char));
+  /** ww = (list_t *)malloc(sizeof(list_t));    */
   if (str == NULL){
     perror("error allocation");
     exit(-3);
   }
+    printf("fhsdjkfhsdklfhsdjk\n");
 
   while (fgets(str, M, f1) != NULL){
-    while(sscanf(str, "%s ", word) != EOF){
-      for (int i=0; i<20; i++){
+    while(sscanf(str, "%s", word) > 0){
+      for (i=0; i<strlen(word); i++){
         word[i] = tolower(word[i]);
       }
-        printf("%s\n", word);
+      str = str + strlen(word) + 1;
+      printf("%s\n", word);
+
+      if (m == 0){
+        ww = insert(ww, word);
+      }
+      /** ww = head; */
+      if (m != 0){
+        while (ww == NULL) {
+          if(strcmp(ww->word, word) == 0){
+            found = 1;
+            ww->occurrence++;
+          }
+          if (strcmp(ww->word, word) != 0){
+            found = 0;
+          }
+          if (found == 0){
+           ww = insert(ww, word);
+          }
+            ww = ww->next;
+        }
+      }
+
+      /** for (ww = head, i = 0; ww != NULL && strcmp(ww->word, word) != 0; ww = ww->next, i++); */
+      /** if (ww == NULL){ */
+      /**   ww = insert(ww, word); */
+      /** } else if (strcmp(ww->word, word) == 0) { */
+      /**   ww->occurrence++; */
+      /** } */
+      /** } */
+      printf("%s\n", ww->word);
+      printf("%d\n", ww->occurrence);
+      m++;
     }
+    printf("\n");
     n++;
   }
+  display (ww);
   fclose(f1);
   printf("%d\n", n);
   f1 = file_open(argv[1], "r");
@@ -76,6 +117,30 @@ FILE *file_open(char *filename, char *mode){
   return f;
 }
 
+list_t *insert (list_t *head, char *word) {   
+  list_t *p;   
+   
+  p = (list_t *)malloc(sizeof(list_t));   
+  p->word = strdup(word);
+  p->occurrence = 0;   
+  p->next = NULL;
+
+  p->next = head;   
+  head = p;   
+  /** return p;    */
+  return p;
+}
+
+void display (list_t *head) {
+  int i=0;
+
+  printf("dhwegfwejkl\n");
+  while (head != NULL) {
+    printf("%s\n", head->word);
+    printf("%d\n", head->occurrence);
+    head = head->next;
+  }
+}
 /** Algorithms and Programming */
 /** Laboratory number 06 */
 /** -------------------- */
