@@ -26,12 +26,14 @@ employee_t *scan_file(employee_t *head, int argc, char *argv[]);
 employee_t *insert (employee_t *head, char *name, char *id, int dd, int mm, int yy, int salary); 
 FILE *file_open(char *filename, char *mode);
 void display (employee_t *head);
+void print (employee_t *head, int argc, char *argv[]);
 
 int main(int argc, char *argv[]) {
   employee_t *e = NULL;
 
   args_check(argc, argv);
   e = scan_file(e, argc, argv);
+  print(e, argc, argv);
   
 
   return 0;
@@ -157,7 +159,25 @@ void display (employee_t *head) {
     printf("%d\n", head->salary);
     head = head->next;
   }
+}
+void print (employee_t *head, int argc, char *argv[]) {
+  char ss[L];
+  char c;
 
+  sscanf(argv[2], "%s", ss);
+  while (sscanf(ss, "%c", &c) == EOF){
+    if(c == 45){
+      printf("%s\n", head->prev->name);
+      printf("%s\n", head->prev->id);
+      printf("%d.%d.%d\n", head->prev->d, head->prev->m, head->prev->y);
+      printf("%d\n", head->prev->salary);
+    } else if (c == 43){
+      printf("%s\n", head->next->name);
+      printf("%s\n", head->next->id);
+      printf("%d.%d.%d\n", head->next->d, head->next->m, head->next->y);
+      printf("%d\n", head->next->salary);
+    }
+  }
 }
 
 /** Exercise 02 */
