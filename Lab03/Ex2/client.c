@@ -161,21 +161,25 @@ void display (employee_t *head) {
   }
 }
 void print (employee_t *head, int argc, char *argv[]) {
+  employee_t *e = head;
   char ss[L];
-  char c;
+
+  printf("\nprint function\n\n");
 
   sscanf(argv[2], "%s", ss);
-  while (sscanf(ss, "%c", &c) == EOF){
-    if(c == 45){
-      printf("%s\n", head->prev->name);
-      printf("%s\n", head->prev->id);
-      printf("%d.%d.%d\n", head->prev->d, head->prev->m, head->prev->y);
-      printf("%d\n", head->prev->salary);
-    } else if (c == 43){
-      printf("%s\n", head->next->name);
-      printf("%s\n", head->next->id);
-      printf("%d.%d.%d\n", head->next->d, head->next->m, head->next->y);
-      printf("%d\n", head->next->salary);
+  printf("%s\n", ss);
+
+  for (int i=0; i<strlen(ss); i++) {
+    if(ss[i] == 45){
+      printf("%s\n", e->prev->name);
+      printf("%s\n", e->prev->id);
+      printf("%d.%d.%d\n", e->prev->d, e->prev->m, e->prev->y);
+      printf("%d\n", e->prev->salary);
+    } else if (ss[i] == 43){
+      printf("%s\n", e->next->name);
+      printf("%s\n", e->next->id);
+      printf("%d.%d.%d\n", e->next->d, e->next->m, e->next->y);
+      printf("%d\n", e->next->salary);
     }
   }
 }
