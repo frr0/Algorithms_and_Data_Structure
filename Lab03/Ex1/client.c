@@ -25,10 +25,6 @@ int main(int argc, char *argv[]) {
   args_check(argc, argv);
   w = scan_file(w, argc, argv);
   
-  for (list_t *tmp = w; tmp != NULL; tmp = tmp->next){
-    /** printf("%s\n%d\n", w->word, w->occurrence); */
-  }
-
   return 0;
 }
 
@@ -67,40 +63,28 @@ list_t *scan_file(list_t *head, int argc, char *argv[]){
       if (m == 0){
         ww = insert(ww, word);
         m++;
-      }
-      if (m != 0){
+      }else if (m != 0){
         tmp = ww;
         found = 0;
         while (tmp != NULL && found == 0) {
           if(strcmp(tmp->word, word) == 0){
             found = 1;
             tmp->occurrence++;
-            /** printf("word: %s\n", tmp->word); */
-            /** printf("occurrence: %d\n", tmp->occurrence); */
           }else if (strcmp(tmp->word, word) != 0){
             found = 0;
           }
             tmp = tmp->next;
         }
-          if (found == 0){
-           ww = insert(ww, word);
-           m++;
-          }
+        if (found == 0){
+         ww = insert(ww, word);
+         m++;
+        }
       }
 
     }
     n++;
   }
-  while (tmp != NULL) {
-            printf("word: %s\n", ww->word);
-            printf("occurrence: %d\n", ww->occurrence);
-    /** printf("%s\n", ww->word); */
-    /** printf("%d\n", ww->occurrence); */
-    ww = ww->next;
-  }
-  /** for (list_t *tmp = ww; tmp != NULL; tmp = tmp->next){ */
-  /**   printf("%s\n%d\n", ww->word, ww->occurrence); */
-  /** } */
+  display(ww);
   fclose(f1);
   return ww;
 }
@@ -129,11 +113,15 @@ list_t *insert (list_t *head, char *word) {
 }
 
 void display (list_t *head) {
-  int i=0;
+  FILE *f = file_open("f2.txt", "w");
+  list_t *tmp = head;
 
-  while (head != NULL) {
-    /** printf("%s\n", head->word); */
-    /** printf("%d\n", head->occurrence); */
-    /** head = head->next; */
+  while (tmp != NULL) {
+    printf("%s ", tmp->word);
+    fprintf(f, "%s ", tmp->word);
+    printf("%d\n", tmp->occurrence);
+    fprintf(f, "%d\n", tmp->occurrence);
+    tmp = tmp->next;
   }
+  fclose(f);
 }

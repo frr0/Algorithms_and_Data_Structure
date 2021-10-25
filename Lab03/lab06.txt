@@ -128,3 +128,7 @@ Bianchi_Elena AAABBBCCDEEFGGGH 15.02.2004 1345
 Bianchi_Elena AAABBBCCDEEFGGGH 15.02.2004 1345
 Verdi_Federica AAABBBCCDEEFGGGH 25.09.1989 2157
 
+  for (list_t *tmp = w; tmp != NULL; tmp = tmp->next){
+    /** printf("%s\n%d\n", w->word, w->occurrence); */
+  }
+
