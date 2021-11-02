@@ -1,72 +1,72 @@
-==6178== Memcheck, a memory error detector
-==6178== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==6178== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
-==6178== Command: ./program f1.txt Giallo_Antonio ---+
-==6178== Parent PID: 6176
-==6178== 
-==6178== Conditional jump or move depends on uninitialised value(s)
-==6178==    at 0x4018D8: print (client.c:183)
-==6178==    by 0x40125B: main (client.c:36)
-==6178== 
-==6178== 
-==6178== HEAP SUMMARY:
-==6178==     in use at exit: 1,122 bytes in 16 blocks
-==6178==   total heap usage: 21 allocs, 5 frees, 11,282 bytes allocated
-==6178== 
-==6178== 51 bytes in 1 blocks are definitely lost in loss record 1 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x401301: scan_file (client.c:66)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 51 bytes in 1 blocks are definitely lost in loss record 2 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x40132A: scan_file (client.c:71)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 58 bytes in 4 blocks are indirectly lost in loss record 3 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x48FB18E: strdup (in /usr/lib64/libc-2.33.so)
-==6178==    by 0x40150E: insert (client.c:119)
-==6178==    by 0x4013CF: scan_file (client.c:81)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 68 bytes in 4 blocks are indirectly lost in loss record 4 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x48FB18E: strdup (in /usr/lib64/libc-2.33.so)
-==6178==    by 0x401524: insert (client.c:120)
-==6178==    by 0x4013CF: scan_file (client.c:81)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 144 bytes in 3 blocks are indirectly lost in loss record 5 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x4014FE: insert (client.c:118)
-==6178==    by 0x4013CF: scan_file (client.c:81)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 201 bytes in 1 blocks are definitely lost in loss record 6 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x40146D: file_num_of_line_completed (client.c:102)
-==6178==    by 0x4012CB: scan_file (client.c:59)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 318 (48 direct, 270 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x4014FE: insert (client.c:118)
-==6178==    by 0x4013CF: scan_file (client.c:81)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== 501 bytes in 1 blocks are definitely lost in loss record 8 of 8
-==6178==    at 0x484086F: malloc (vg_replace_malloc.c:380)
-==6178==    by 0x4012D8: scan_file (client.c:61)
-==6178==    by 0x401242: main (client.c:35)
-==6178== 
-==6178== LEAK SUMMARY:
-==6178==    definitely lost: 852 bytes in 5 blocks
-==6178==    indirectly lost: 270 bytes in 11 blocks
-==6178==      possibly lost: 0 bytes in 0 blocks
-==6178==    still reachable: 0 bytes in 0 blocks
-==6178==         suppressed: 0 bytes in 0 blocks
-==6178== 
-==6178== Use --track-origins=yes to see where uninitialised values come from
-==6178== For lists of detected and suppressed errors, rerun with: -s
-==6178== ERROR SUMMARY: 7 errors from 6 contexts (suppressed: 0 from 0)
+==298927== Memcheck, a memory error detector
+==298927== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==298927== Using Valgrind-3.17.0 and LibVEX; rerun with -h for copyright info
+==298927== Command: ./program f1.txt Giallo_Antonio ---+
+==298927== Parent PID: 298925
+==298927== 
+==298927== Conditional jump or move depends on uninitialised value(s)
+==298927==    at 0x4018D8: print (client.c:183)
+==298927==    by 0x40125B: main (client.c:36)
+==298927== 
+==298927== 
+==298927== HEAP SUMMARY:
+==298927==     in use at exit: 1,122 bytes in 16 blocks
+==298927==   total heap usage: 21 allocs, 5 frees, 11,282 bytes allocated
+==298927== 
+==298927== 51 bytes in 1 blocks are definitely lost in loss record 1 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x401301: scan_file (client.c:66)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 51 bytes in 1 blocks are definitely lost in loss record 2 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x40132A: scan_file (client.c:71)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 58 bytes in 4 blocks are indirectly lost in loss record 3 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x48FB18E: strdup (in /usr/lib64/libc-2.33.so)
+==298927==    by 0x40150E: insert (client.c:119)
+==298927==    by 0x4013CF: scan_file (client.c:81)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 68 bytes in 4 blocks are indirectly lost in loss record 4 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x48FB18E: strdup (in /usr/lib64/libc-2.33.so)
+==298927==    by 0x401524: insert (client.c:120)
+==298927==    by 0x4013CF: scan_file (client.c:81)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 144 bytes in 3 blocks are indirectly lost in loss record 5 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x4014FE: insert (client.c:118)
+==298927==    by 0x4013CF: scan_file (client.c:81)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 201 bytes in 1 blocks are definitely lost in loss record 6 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x40146D: file_num_of_line_completed (client.c:102)
+==298927==    by 0x4012CB: scan_file (client.c:59)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 318 (48 direct, 270 indirect) bytes in 1 blocks are definitely lost in loss record 7 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x4014FE: insert (client.c:118)
+==298927==    by 0x4013CF: scan_file (client.c:81)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== 501 bytes in 1 blocks are definitely lost in loss record 8 of 8
+==298927==    at 0x484086F: malloc (vg_replace_malloc.c:380)
+==298927==    by 0x4012D8: scan_file (client.c:61)
+==298927==    by 0x401242: main (client.c:35)
+==298927== 
+==298927== LEAK SUMMARY:
+==298927==    definitely lost: 852 bytes in 5 blocks
+==298927==    indirectly lost: 270 bytes in 11 blocks
+==298927==      possibly lost: 0 bytes in 0 blocks
+==298927==    still reachable: 0 bytes in 0 blocks
+==298927==         suppressed: 0 bytes in 0 blocks
+==298927== 
+==298927== Use --track-origins=yes to see where uninitialised values come from
+==298927== For lists of detected and suppressed errors, rerun with: -s
+==298927== ERROR SUMMARY: 7 errors from 6 contexts (suppressed: 0 from 0)

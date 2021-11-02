@@ -121,7 +121,7 @@ char ***order(char ***mat, int rr, int cc){
     if ((strcmp(A[a], B[b]) < 0) && (strcmp(A[a], C[c]) < 0) && (strcmp(A[a], D[d]) < 0)) {
       strcpy(E[i], A[a]);
       strcpy(A[a], aa);
-      if (a < cc-1) a++; 
+      if (a < cc-1) a++;
       /** else strcpy(A[a], aa);  */
 
       printf("%s\n", E[i]);
@@ -129,7 +129,7 @@ char ***order(char ***mat, int rr, int cc){
       printf("in vector a %d\n", a-1);
 
     } else if ((strcmp(B[b], A[a]) < 0) && (strcmp(B[b], C[c]) < 0) && (strcmp(B[b], D[d]) < 0)){
-      strcpy(E[i], B[b]); 
+      strcpy(E[i], B[b]);
       strcpy(B[b], aa);
       if (b < cc-1) b++;
       /** else strcpy(B[b], aa);  */
@@ -149,7 +149,7 @@ char ***order(char ***mat, int rr, int cc){
       printf("in vector c %d\n", c-1);
 
     } else if ((strcmp(D[d], A[a]) < 0) && (strcmp(D[d], B[b]) < 0) && (strcmp(D[d], C[c]) < 0)){
-      strcpy(E[i], D[d]); 
+      strcpy(E[i], D[d]);
       strcpy(D[d], aa);
       if (d < cc-1) d++;
       /** else strcpy(C[c], aa);  */

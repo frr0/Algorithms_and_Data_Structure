@@ -23,7 +23,7 @@ struct employee_s {
 void args_check(int argc, char *argv[]);
 int file_num_of_line_completed(char *filename, char *mode, int N);
 employee_t *scan_file(employee_t *head, int argc, char *argv[]);
-employee_t *insert (employee_t *head, char *name, char *id, int dd, int mm, int yy, int salary); 
+employee_t *insert (employee_t *head, char *name, char *id, int dd, int mm, int yy, int salary);
 FILE *file_open(char *filename, char *mode);
 void display (employee_t *head);
 void print (employee_t *head, int argc, char *argv[]);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
   args_check(argc, argv);
   e = scan_file(e, argc, argv);
   print(e, argc, argv);
-  
+
 
   return 0;
 }
@@ -112,18 +112,18 @@ int file_num_of_line_completed(char *filename, char *mode, int N) {
 }
 
 
-employee_t *insert (employee_t *head, char *name, char *id, int dd, int mm, int yy, int salary) {   
-  employee_t *p;   
-   
-  p = (employee_t *)malloc(sizeof(employee_t));   
+employee_t *insert (employee_t *head, char *name, char *id, int dd, int mm, int yy, int salary) {
+  employee_t *p;
+
+  p = (employee_t *)malloc(sizeof(employee_t));
   p->name = strdup(name);
-  p->id = strdup(id);   
+  p->id = strdup(id);
   p->d = dd;
   p->m = mm;
   p->y = yy;
   p->salary = salary;
 
-  p->next = head;   
+  p->next = head;
   head = p;
   if (t) { head->next->prev = head; } t++;
 
