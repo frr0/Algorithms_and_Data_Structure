@@ -1,14 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define DEBUG 0
+
 int mult (int x, int y);
+void d2b (int d, int *b, int *n);
 
 int main(int argc, char *argv[]) {
-  int res, x, y;
+  int res, x, y, a = 17, *b, n = 2;
   x = 3;
   y = 4;
+#if DEBUG
   res = mult (x, y);
   printf("%d\n", res);
+#endif
+  d2b(17, b, &n);
   return 0;
 }
 
@@ -24,16 +30,17 @@ int main(int argc, char *argv[]) {
 /** x * y = x * (y-1) */
 /** x * 1 = x */
 /**  */
-int mult (int x, int y) {
-  /** static int i = 0; */
-  static int r = 0;
-  if (y == 0) {
-    return x;
+#if DEBUG
+  int mult (int x, int y) {
+    /** static int i = 0; */
+    static int r = 0;
+    if (y == 0) {
+      return x;
+    }
+    r = r + x;
+    return mult(x, y-1);
   }
-  r = r + x;
-  return mult(x, y-1);
-}
-
+#endif
 
 /** B. */
 /** Function */
@@ -58,6 +65,20 @@ int mult (int x, int y) {
 /** Each call to the recursive function must generate and store into the */
 /** array one single bit of the result. */
 /**  */
+
+void d2b (int d, int *b, int *n) {
+  int a;
+  a = d%(*n);
+  d = d/(*n);
+  printf("%d", a);
+  if (d == 0 || d == 0) {
+    return;
+  }
+
+  d2b(d, b, n);
+
+}
+
 /** C. */
 /** Function */
 /** int catalan (int n); */
