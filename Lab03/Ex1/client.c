@@ -1,9 +1,9 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
 
-#define M 1000+1
+#define M 1000 + 1
 
 typedef struct list_s list_t;
 
@@ -15,27 +15,27 @@ struct list_s {
 
 void args_check(int argc, char *argv[]);
 list_t *scan_file(list_t *head, int argc, char *argv[]);
-list_t *insert (list_t *head, char *word); 
+list_t *insert(list_t *head, char *word);
 FILE *file_open(char *filename, char *mode);
-void display (list_t *head);
+void display(list_t *head);
 
 int main(int argc, char *argv[]) {
   list_t *w = NULL;
 
   args_check(argc, argv);
   w = scan_file(w, argc, argv);
-  
+
   return 0;
 }
 
-void args_check(int argc, char *argv[]){
-  if (argc != 3){
+void args_check(int argc, char *argv[]) {
+  if (argc != 3) {
     perror("args error, not 3");
     exit(-1);
   }
 }
 
-list_t *scan_file(list_t *head, int argc, char *argv[]){
+list_t *scan_file(list_t *head, int argc, char *argv[]) {
   list_t *ww = NULL;
   list_t *tmp;
   int n = 0;
@@ -48,39 +48,38 @@ list_t *scan_file(list_t *head, int argc, char *argv[]){
 
   str = malloc(M * sizeof(char));
   word = malloc(M * sizeof(char));
-  if (str == NULL){
+  if (str == NULL) {
     perror("error allocation");
     exit(-3);
   }
 
-  while (fgets(str, M, f1) != NULL){
-    while(sscanf(str, "%s", word) > 0){
-      for (i=0; i<strlen(word); i++){
+  while (fgets(str, M, f1) != NULL) {
+    while (sscanf(str, "%s", word) > 0) {
+      for (i = 0; i < strlen(word); i++) {
         word[i] = tolower(word[i]);
       }
       str = str + strlen(word) + 1;
 
-      if (m == 0){
+      if (m == 0) {
         ww = insert(ww, word);
         m++;
-      }else if (m != 0){
+      } else if (m != 0) {
         tmp = ww;
         found = 0;
         while (tmp != NULL && found == 0) {
-          if(strcmp(tmp->word, word) == 0){
+          if (strcmp(tmp->word, word) == 0) {
             found = 1;
             tmp->occurrence++;
-          }else if (strcmp(tmp->word, word) != 0){
+          } else if (strcmp(tmp->word, word) != 0) {
             found = 0;
           }
-            tmp = tmp->next;
+          tmp = tmp->next;
         }
-        if (found == 0){
-         ww = insert(ww, word);
-         m++;
+        if (found == 0) {
+          ww = insert(ww, word);
+          m++;
         }
       }
-
     }
     n++;
   }
@@ -89,30 +88,29 @@ list_t *scan_file(list_t *head, int argc, char *argv[]){
   return ww;
 }
 
-FILE *file_open(char *filename, char *mode){
+FILE *file_open(char *filename, char *mode) {
   FILE *f = fopen(filename, mode);
-  if (f == NULL){
+  if (f == NULL) {
     perror("error file open");
     exit(-2);
   }
   return f;
 }
 
-list_t *insert (list_t *head, char *word) {   
-  list_t *p;   
-   
-  p = (list_t *)malloc(sizeof(list_t));   
+list_t *insert(list_t *head, char *word) {
+  list_t *p;
+  p = (list_t *)malloc(sizeof(list_t));
   p->word = strdup(word);
-  p->occurrence = 1;   
+  p->occurrence = 1;
   p->next = NULL;
 
-  p->next = head;   
-  head = p;   
+  p->next = head;
+  head = p;
 
   return p;
 }
 
-void display (list_t *head) {
+void display(list_t *head) {
   FILE *f = file_open("f2.txt", "w");
   list_t *tmp = head;
 

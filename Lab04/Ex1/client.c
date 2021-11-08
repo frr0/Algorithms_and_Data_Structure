@@ -1,34 +1,43 @@
+#include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 #define C 100 + 1
+#define XX 20 + 1
 
-typedef struct producer_s *producer_t;
-typedef struct product_s *product_t;
+typedef struct producer *producer;
+typedef struct product *product;
+typedef struct id *id;
 
-struct producer_s {
-  char *name;
-  char *id;
-  producer_t next;
-  product_t prods;
+struct producer {
+  id next_comp;
+  product prods;
+  producer next;
 };
 
-struct product_s {
+struct id {
+  char *name_comp;
+  char *id_comp;
+};
+
+struct product {
   char *name_item;
   int id_item;
-  product_t next_item;
+  product next_item;
 };
 
 void check_args(int argc, char *argv[]);
-producer_t scan_file(int argc, char *argv[]);
-int file_num_of_line_completed(char *filename, char *mode, int n);
 FILE *open_file(char *filename, char *mode);
 void *malloc_ck(int size);
-producer_t insert_comp(producer_t cc, char *__name, char *__id);
-producer_t insert_item(producer_t p, char *__id_c, char *__name_car, int __n_car);
-producer_t scan_list();
-void display(producer_t c);
+int file_num_of_line_completed(char *filename, char *mode);
+producer scan_file(int argc, char *argv[]);
+producer insert_comp(producer p, char *__name, char *__id);
+producer insert_item(producer p, char *__id_c, char *__name_car, int __n_car);
+producer scan_list(producer p, char *_id_c);
+void display(producer p);
+void free_list(producer p);
 
 int main(int argc, char *argv[]) {
   check_args(argc, argv);
@@ -36,13 +45,22 @@ int main(int argc, char *argv[]) {
   return 0;
 }
 
-void check_args(int argc, char *argv[]) {
-  if (argc != 3) {
-    perror("Error, not 3 args!");
-  }
+void check_args(int argc, char *argv[]) { assert(argc == 3); }
+
+FILE *open_file(char *filename, char *mode) {
+  FILE *f;
+  f = fopen(filename, mode);
+  assert(f != NULL);
+  return f;
 }
 
-int file_num_of_line_completed(char *filename, char *mode, int N) {
+void *malloc_ck(int size) {
+  void *ptr = malloc(size);
+  assert(ptr != NULL);
+  return ptr;
+}
+
+int file_num_of_line_completed(char *filename, char *mode) {
   char *line;
   FILE *f;
   int n = 0;
@@ -53,80 +71,70 @@ int file_num_of_line_completed(char *filename, char *mode, int N) {
     n++;
   }
   fclose(f);
+  free(line);
   return n;
 }
 
-FILE *open_file(char *filename, char *mode) {
-  FILE *f;
-  f = fopen(filename, mode);
-  if (!f) {
-    perror(filename);
-    exit(EXIT_FAILURE);
-  }
-  return f;
-}
-
-
-void *malloc_ck(int size) {
-  void *ptr = malloc(size);
-
-  if (ptr == NULL) {
-    printf("Memory allocation error!\n");
-    exit(EXIT_FAILURE);
-  }
-  return ptr;
-}
-
-producer_t scan_file(int argc, char *argv[]) {
+producer scan_file(int argc, char *argv[]) {
   FILE *f1, *f2;
   int n1 = 0, n2 = 0, _n_car;
   char *_name, *_id, *_id_c, *_name_car;
-  producer_t c = NULL;
-  producer_t cc;
+  producer p = NULL;
+  producer c;
 
-  _name = malloc_ck(20*sizeof(char));
-  _id = malloc_ck(20*sizeof(char));
-  _id_c = malloc_ck(20*sizeof(char));
-  _name_car = malloc_ck(20*sizeof(char));
-  n1 = file_num_of_line_completed(argv[1], "r", n1);
-  n2 = file_num_of_line_completed(argv[2], "r", n2);
+  _name = malloc_ck(XX * sizeof(char));
+  _id = malloc_ck(XX * sizeof(char));
+  _id_c = malloc_ck(XX * sizeof(char));
+  _name_car = malloc_ck(XX * sizeof(char));
+
+  n1 = file_num_of_line_completed(argv[1], "r");
+  n2 = file_num_of_line_completed(argv[2], "r");
   f1 = open_file(argv[1], "r");
   f2 = open_file(argv[2], "r");
 
   for (int i = 0; i < n1; i++) {
     fscanf(f1, "%s %s", _name, _id);
-    c = insert_comp(c, _name, _id);
+    p = insert_comp(p, _name, _id);
   }
 
-  for (int i = 0; i < n1; i++) {
+  for (int i = 0; i < n2; i++) {
     fscanf(f2, "%s %s %d", _id_c, _name_car, &_n_car);
-    cc = scan_list(c, _id_c);
-    cc = insert_item(cc, _id_c, _name_car, _n_car);
+    c = scan_list(p, _id_c);
+    c = insert_item(c, _id_c, _name_car, _n_car);
   }
-  display(c);
-  return c;
+
+  display(p);
+
+  free(_name);
+  free(_id);
+  free(_id_c);
+  free(_name_car);
+  free_list(c);
+
+  return p;
 }
 
-//producer , company
-producer_t insert_comp(producer_t p, char *__name, char *__id){
-  producer_t c = p;
-  producer_t q;
+/** producer , company */
+producer insert_comp(producer p, char *__name, char *__id) {
+  producer c = p;
+  producer q;
 
-  q = malloc_ck(sizeof(producer_t));
-  q->name = strdup(__name);
-  q->id = strdup(__id);
+  q = malloc_ck(sizeof(producer));
+  q->next_comp = malloc_ck(sizeof(id));
+  q->next_comp->name_comp = strdup(__name);
+  q->next_comp->id_comp = strdup(__id);
   q->next = c;
   c = q;
   return c;
 }
 
-//product item car
-producer_t insert_item(producer_t p, char *__id_c, char *__name_car, int __n_car) {
-  producer_t c = p;
-  producer_t q;
+/** product item car */
+producer insert_item(producer p, char *__id_c, char *__name_car, int __n_car) {
+  producer c = p;
+  producer q;
 
-  q = malloc_ck(sizeof(producer_t));
-  q->prods = malloc_ck(sizeof(product_t));
+  q = malloc_ck(sizeof(producer));
+  q->prods = malloc_ck(sizeof(product));
   q->prods->name_item = strdup(__name_car);
   q->prods->id_item = __n_car;
   q->prods->next_item = c->prods;
@@ -134,97 +142,49 @@ producer_t insert_item(producer_t p, char *__id_c, char *__name_car, int __n_car
   return c;
 }
 
-producer_t scan_list(producer_t c, char *_id_c) {
-  producer_t cc = c;
-  while (cc != NULL) {
-    if (strcmp(cc->id, _id_c) == 0) {
-      return cc;
-    } else cc = cc->next;
+producer scan_list(producer p, char *_id_c) {
+  producer c = p;
+  while (c != NULL) {
+    if (strcmp(c->next_comp->id_comp, _id_c) == 0) {
+      return c;
+    } else
+      c = c->next;
   }
-  return cc;
+  return c;
 }
 
-void display(producer_t head) {
-  while (head != NULL) {
+void display(producer p) {
+  producer c = p;
+  while (c != NULL) {
     printf("Company:\n");
-    printf("%s %s\n", head->name, head->id);
+    printf("%s %s\n", c->next_comp->name_comp, c->next_comp->id_comp);
     printf("Cars:\n");
-    while (head->prods != NULL) {
-      printf("%s %d\n", head->prods->name_item, head->prods->id_item);
-      head->prods = head->prods->next_item;
+    while (c->prods != NULL) {
+      printf("%s %d\n", c->prods->name_item, c->prods->id_item);
+      c->prods = c->prods->next_item;
     }
     printf("\n");
-    head = head->next;
+    c = c->next;
   }
 }
 
-/** Exercise 01 */
-/** ----------- */
-/**  */
-/** A "producer" file includes a line for each car manufacturer with the */
-/** following format: */
-/** manufactuiredName id */
-/** where manufacturerName and id are strings of 20 characters at most. */
-/** The following is a correct example: */
-/**  */
-/** FIAT it001 */
-/** ALFA_ROMEO it002 */
-/** BMW ge001 */
-/** MERCEDES ge002 */
-/** TOYOTA ja001 */
-/** ... */
-/**  */
-/** The size of the file, and the order of the lines within the file, are */
-/** unknown. */
-/**  */
-/** A "product" file stores the product names and relative prices for each */
-/** product of each manufacturer, with the format: */
-/** id productName price */
-/** The following one is a correct example: */
-/**  */
-/** it001 500 15131 */
-/** it001 Panda 12001 */
-/** it001 Punto 17891 */
-/** ge002 AClass 22411 */
-/** ge002 CClass 75641 */
-/** ... */
-/**  */
-/** The size (and order) of the file is unknown. */
-/**  */
-/** Write a C program that: */
-/** * receives two file names on the command line */
-/** * stores the content of the two files (the first one of type "producer", */
-/**   the second one of type "product") in a proper data structure */
-/** * goes through an iteration in which it reads the name of a */
-/**   manufacturer (e.g, FIAT) and it prints-out all products (and */
-/**   relative prices) produced by it on standard output. */
-/**  */
-/** Suggestion */
-/** ---------- */
-/**  */
-/** Implement a "list of lists", i.e., a main "producer" list with */
-/** a secondary "product" list for each producer element. */
-/**  */
-/**  ------    ------    ------     */
-/**  |    | -> |    | -> |    | -> ... product list */
-/**  ------    ------    ------    */
-/**    | */
-/**    v */
-/**  ------    ------   */
-/**  |    | -> |    | -> ... */
-/**  ------    ------    */
-/**    | */
-/**    v */
-/** producer */
-/**  list */
-/**  ... */
-/**  */
-/** as with this data structure it is easy to find all products */
-/** manufactured by a given producer. */
+void free_list(producer p) {
+  producer c1 = p, c2;
+  product t1 = p->prods, t2;
+  id i = p->next_comp;
 
-  /** printf("c->name (first in list): %s %s \n", c->name, c->id); */
-  /** printf("c->next->name (second in list): %s %s\n", c->next->name, c->next->id); */
-  /** printf("c->next->next->name (third in list): %s %s\n", c->next->next->name, c->next->next->id); */
-  /** printf("c->next->next->next->name (fourth in list): %s %s\n", c->next->next->next->name, c->next->next->next->id); */
-  /** printf("c->next->next->next->next->name (fifth in list): %s %s %s %d\n", */
-  /**     c->next->next->next->next->name, c->next->next->next->next->id, c->next->next->next->next->prods->name_item, c->next->next->next->next->prods->id_item); */
+  while (c1 != NULL) {
+    while (t1 != NULL) {
+      t2 = t1->next_item;
+      free(t2->name_item);
+      free(t2);
+      free(i->id_comp);
+      free(i->name_comp);
+      free(i);
+      t1 = t2;
+    }
+    c2 = c1->next;
+    free(c1);
+    c1 = c2;
+  }
+}

@@ -4,7 +4,6 @@
 
 #define DEBUG 0
 
-int mult(int x, int y);
 void d2b(int d, int *b, int *n);
 int catalan(int n);
 int countSpaces(char *s);
@@ -14,18 +13,29 @@ void triangle2(int n);
 
 int main(int argc, char *argv[]) {
   int res, a = 17, *b, n = 2, c, p;
-  char s[12] = {"a b c d e f"};
+  /** char s[12] = {"a b c d e f"}; */
+  char r[8] = {"abcdcba"};
 
-  c = countSpaces(s);
-  printf("spaces = %d", c);
+  triangle1(8);
+
 #if DEBUG
   res = mult(4, 3);
   printf("%d\n", res);
+
+  /** ok */
   d2b(14, b, &n);
+
   c = catalan(6);
-  p = isPalindrome(char *s, int l);
-  triangle1(int n);
-  triangle2(int n);
+
+  /** ok */
+  c = countSpaces(s);
+  printf("spaces = %d", c);
+
+  /** ok */
+  p = isPalindrome(r, 7);
+  printf("%d", p);
+
+  triangle2(n);
 #endif
 
   return 0;
@@ -130,11 +140,6 @@ int catalan(int n) {
 
   return n;
 }
-/** D. */
-/** Function */
-/** int countSpaces (char *s); */
-/** which counts and returns the number of white-space characters that */
-/** appear in a string s. */
 /** Notice that, characters are white-space as defined by the isspace() */
 /** function within the ctype library. */
 /**  */
@@ -148,7 +153,6 @@ int catalan(int n) {
 /** initialize the string as: */
 /** char str[] = "This is a string with spaces!"; */
 /**  */
-int i = 0;
 int countSpaces(char *s) {
   static int n = 0;
   if (*s == 0) {
@@ -157,10 +161,10 @@ int countSpaces(char *s) {
   if (isspace(*s)) {
     n++;
   }
-  i++;
-  n = countSpaces(s++);
-  return -1;
+  n = countSpaces(++s);
+  /** return -1; */
 }
+
 /** E. */
 /** Function */
 /** int isPalindrome (char *s, int l);  */
@@ -179,7 +183,29 @@ int countSpaces(char *s) {
 /** them from front to back or from back to front. */
 /** The number 12321 is a numerical palindrome. */
 /**  */
-int isPalindrome(char *s, int l) { return l; }
+int isPalindrome(char *s, int l) {
+  int pal = 0;
+  int a, j = 0;
+  static int u = 0;
+  u++;
+  if (l == -1) {
+    return pal;
+  }
+
+  printf("*s = %c\n*(s + (l - %d)) = %c\n\n", *s, u, *(s + (l - u)));
+  if (*s == '\0') {
+    pal = 1;
+    return pal;
+  }
+  if (*s == (*(s + (l - u)))) {
+    a = isPalindrome(++s, --l);
+    if (l == 1) {
+      pal = 1;
+      return pal;
+    }
+  }
+  return pal;
+}
 /** F. */
 /** Function */
 /** void triangle (int n, ...);  */
@@ -199,7 +225,18 @@ int isPalindrome(char *s, int l) { return l; }
 /** Use an iterative construct (along each row) plus a recursion mechanism */
 /** to move on the subsequent row. */
 /**  */
-void triangle1(int n) {}
+void triangle1(int n) {
+  static int aaa;
+  aaa = n * 2;
+  if (n == 0) {
+    return;
+  }
+  for (int i = 0; i < aaa; i++) {
+    printf("%d", n);
+  }
+  printf("\n");
+  triangle1(++n);
+}
 /** G. */
 /** Implement the previous function */
 /** void triangle (int n, ...);  */
