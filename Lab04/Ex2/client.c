@@ -1,20 +1,33 @@
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #define DEBUG 0
 
-int mult (int x, int y);
-void d2b (int d, int *b, int *n);
+int mult(int x, int y);
+void d2b(int d, int *b, int *n);
+int catalan(int n);
+int countSpaces(char *s);
+int isPalindrome(char *s, int l);
+void triangle1(int n);
+void triangle2(int n);
 
 int main(int argc, char *argv[]) {
-  int res, x, y, a = 17, *b, n = 2;
-  x = 3;
-  y = 4;
+  int res, a = 17, *b, n = 2, c, p;
+  char s[12] = {"a b c d e f"};
+
+  c = countSpaces(s);
+  printf("spaces = %d", c);
 #if DEBUG
-  res = mult (x, y);
+  res = mult(4, 3);
   printf("%d\n", res);
+  d2b(14, b, &n);
+  c = catalan(6);
+  p = isPalindrome(char *s, int l);
+  triangle1(int n);
+  triangle2(int n);
 #endif
-  d2b(17, b, &n);
+
   return 0;
 }
 
@@ -30,24 +43,20 @@ int main(int argc, char *argv[]) {
 /** x * y = x * (y-1) */
 /** x * 1 = x */
 /**  */
-#if DEBUG
-  int mult (int x, int y) {
-    /** static int i = 0; */
-    static int r = 0;
-    if (y == 0) {
-      return x;
-    }
-    r = r + x;
-    return mult(x, y-1);
+int mult(int x, int y) {
+  /** static int i = 0; */
+  static int r = 0;
+  if (y == 0) {
+    return x;
   }
-#endif
+  r = r + x;
+  return mult(x, y - 1);
+}
 
 /** B. */
 /** Function */
 /** void d2b (int d, int *b, int *n); */
 /** to convert the decimal number d, into a binary one (stored into the */
-/** array b) with n bits. */
-/** Notice that to perform this conversion, it is necessary to */
 /** apply the "division" algorithm as follows: */
 /**  */
 /**    :2 */
@@ -66,17 +75,15 @@ int main(int argc, char *argv[]) {
 /** array one single bit of the result. */
 /**  */
 
-void d2b (int d, int *b, int *n) {
+void d2b(int d, int *b, int *n) {
   int a;
-  a = d%(*n);
-  d = d/(*n);
+  a = d % (*n);
+  d = d / (*n);
   printf("%d", a);
-  if (d == 0 || d == 0) {
+  if (d == 0) {
     return;
   }
-
   d2b(d, b, n);
-
 }
 
 /** C. */
@@ -92,16 +99,17 @@ void d2b (int d, int *b, int *n) {
 /** and */
 /** C_{n} = sum_{i=0}^{i=(n-1)} (C_i * C_{n-1-i})     for n>=1 */
 /**  */
-/** Write a program that, using a recursive function to generate Catalan numbers, */
+/** Write a program that, using a recursive function to generate Catalan
+ * numbers, */
 /** prints out the first 10 Catalan numbers. */
-/**  */
+
 /** Observation */
 /** ----------- */
 /** sum indicates the summation symbol, i.e., */
 /** sum_{i=0}^{i=(n-1)} (C_i * C_{n-1-i}) */
 /** indicates the addition sequence of the numbers (C_i * C_{n-1-i}) */
 /** for all values of i from i=0 to i=n-1: */
-/**  */
+
 /** C_0 = 1 */
 /** C_1 = C_0*C_0 = 1 */
 /** C_2 = C_0*C_1 + C_1*C_0 = 2 */
@@ -111,6 +119,17 @@ void d2b (int d, int *b, int *n) {
 /** C_6 = C_0*C_5 + C_1*C_4 + C_2*C_3 + C_3*C_2 + C_4*C_1 + C_5*C_0 = 132 */
 /** ... */
 /**  */
+int catalan(int n) {
+  static int i = 0;
+  static int c = 0;
+
+  if (n)
+    return c;
+
+  c = catalan(n - 1);
+
+  return n;
+}
 /** D. */
 /** Function */
 /** int countSpaces (char *s); */
@@ -129,6 +148,19 @@ void d2b (int d, int *b, int *n) {
 /** initialize the string as: */
 /** char str[] = "This is a string with spaces!"; */
 /**  */
+int i = 0;
+int countSpaces(char *s) {
+  static int n = 0;
+  if (*s == 0) {
+    return n;
+  }
+  if (isspace(*s)) {
+    n++;
+  }
+  i++;
+  n = countSpaces(s++);
+  return -1;
+}
 /** E. */
 /** Function */
 /** int isPalindrome (char *s, int l);  */
@@ -147,6 +179,7 @@ void d2b (int d, int *b, int *n) {
 /** them from front to back or from back to front. */
 /** The number 12321 is a numerical palindrome. */
 /**  */
+int isPalindrome(char *s, int l) { return l; }
 /** F. */
 /** Function */
 /** void triangle (int n, ...);  */
@@ -166,8 +199,10 @@ void d2b (int d, int *b, int *n) {
 /** Use an iterative construct (along each row) plus a recursion mechanism */
 /** to move on the subsequent row. */
 /**  */
+void triangle1(int n) {}
 /** G. */
 /** Implement the previous function */
 /** void triangle (int n, ...);  */
 /** without using any iterative construct, i.e., using recursion */
 /** to "move" along both rows and columns of the triangle. */
+void triangle2(int n) {}

@@ -1,0 +1,28 @@
+NULL == null == NUL == 0 == '\0' == EOF (end of file/end of string) == 0x00 == 0 ?
+'\n' == 10 == 0xa (new line)
+0 == 0x30 == 48
+\t == 0x9 == 9
+
+' '   (0x20)	space (SPC)
+'\t'	(0x09)	horizontal tab (TAB)
+'\n'	(0x0a)	newline (LF)
+'\v'	(0x0b)	vertical tab (VT)
+'\f'	(0x0c)	feed (FF)
+'\r'	(0x0d)	carriage return (CR)
+
+
+
+
+if (n == 0x0) == if (n == NULL) ?
+
+ma
+
+if (n == 0) ?
+è uguale a dire
+if (n == NULL)
+o
+if (n == 0x30) ascii hex
+e quindi
+if (n == 48) ascii dec
+e
+if (n == '0')
