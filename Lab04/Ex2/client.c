@@ -4,6 +4,9 @@
 
 #define DEBUG 0
 
+int ii = 0;
+
+int mult(int x, int y);
 void d2b(int d, int *b, int *n);
 int catalan(int n);
 int countSpaces(char *s);
@@ -13,29 +16,41 @@ void triangle2(int n);
 
 int main(int argc, char *argv[]) {
   int res, a = 17, *b, n = 2, c, p;
-  /** char s[12] = {"a b c d e f"}; */
+  char s[12] = {"a b c d e f"};
   char r[8] = {"abcdcba"};
-
-  triangle1(8);
 
 #if DEBUG
   res = mult(4, 3);
   printf("%d\n", res);
+#endif
 
-  /** ok */
-  d2b(14, b, &n);
+#if DEBUG
+  d2b(128, b, &n);
+  for (int i = ii; i > 0; i--) {
+    printf("%d", b[i]);
+  }
+#endif
 
+#if DEBUG
   c = catalan(6);
+#endif
 
-  /** ok */
+#if DEBUG
   c = countSpaces(s);
   printf("spaces = %d", c);
+#endif
 
-  /** ok */
+#if DEBUG
   p = isPalindrome(r, 7);
   printf("%d", p);
+#endif
 
-  triangle2(n);
+#if DEBUG
+  triangle1(7);
+#endif
+
+#if DEBUG
+  triangle2(8);
 #endif
 
   return 0;
@@ -54,10 +69,9 @@ int main(int argc, char *argv[]) {
 /** x * 1 = x */
 /**  */
 int mult(int x, int y) {
-  /** static int i = 0; */
   static int r = 0;
   if (y == 0) {
-    return x;
+    return r;
   }
   r = r + x;
   return mult(x, y - 1);
@@ -87,9 +101,11 @@ int mult(int x, int y) {
 
 void d2b(int d, int *b, int *n) {
   int a;
+  ii++;
   a = d % (*n);
   d = d / (*n);
-  printf("%d", a);
+  b[ii] = a;
+  /** printf("%d", a); */
   if (d == 0) {
     return;
   }
@@ -162,7 +178,7 @@ int countSpaces(char *s) {
     n++;
   }
   n = countSpaces(++s);
-  /** return -1; */
+  return -1;
 }
 
 /** E. */
@@ -231,15 +247,36 @@ void triangle1(int n) {
   if (n == 0) {
     return;
   }
-  for (int i = 0; i < aaa; i++) {
+  for (int i = n; i < aaa; i++) {
     printf("%d", n);
   }
   printf("\n");
-  triangle1(++n);
+  triangle1(--n);
 }
 /** G. */
 /** Implement the previous function */
 /** void triangle (int n, ...);  */
 /** without using any iterative construct, i.e., using recursion */
 /** to "move" along both rows and columns of the triangle. */
-void triangle2(int n) {}
+int l = 0;
+
+void triangle2(int n) {
+  static int aaa;
+  static int nn;
+  if (l == 0)
+    nn = n;
+  l++;
+  aaa = n * 2;
+  if (n == 0) {
+    return;
+  }
+  if (nn < aaa) {
+    printf("%d", n);
+    nn++;
+    triangle2(n);
+    return;
+  }
+  printf("\n");
+  l = 0;
+  triangle1(--n);
+}

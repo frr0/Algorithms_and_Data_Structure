@@ -48,8 +48,7 @@ int main(int argc, char *argv[]) {
 void check_args(int argc, char *argv[]) { assert(argc == 3); }
 
 FILE *open_file(char *filename, char *mode) {
-  FILE *f;
-  f = fopen(filename, mode);
+  FILE *f = fopen(filename, mode);
   assert(f != NULL);
   return f;
 }
