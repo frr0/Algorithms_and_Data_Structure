@@ -1,4 +1,4 @@
-#include "client.h"
+#include "clientPublic.h"
 #include "core.h"
 
 int main(int argc, char **argv) {

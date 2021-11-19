@@ -1,4 +1,4 @@
-#include "client.h"
+#include "util.h"
 
 void check_args(int argc, char **argv) { assert(argc == 3); }
 

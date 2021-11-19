@@ -1,7 +1,7 @@
 #ifndef _UTIL
 #define _UTIL
 
-#include <stdio.h>
+#include "clientPublic.h"
 
 void check_args(int argc, char **argv);
 FILE *open_file(char *filename, char *mode);

@@ -1,7 +1,7 @@
 #ifndef _PRODUCER
 #define _PRODUCER
 
-#include "client.h"
+#include "clientPrivate.h"
 #include "util.h"
 
 producer insert_comp(producer p, char *__name, char *__id);
