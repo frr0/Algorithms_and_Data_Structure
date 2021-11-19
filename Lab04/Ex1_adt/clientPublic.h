@@ -14,4 +14,6 @@ typedef struct _producer *producer;
 typedef struct _product *product;
 typedef struct _id *id;
 
+producer core(int argc, char **argv);
+
 #endif
