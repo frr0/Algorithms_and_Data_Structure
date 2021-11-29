@@ -7,7 +7,8 @@
 #define R 12
 #define C 10
 
-int escape1(char **m, int r, int c);
+void printmat2(char **m);
+int escape1(char **m, char **mm, int r, int c);
 int escape2(char **m, int r, int c);
 int escape3(char **m, int r, int c);
 
