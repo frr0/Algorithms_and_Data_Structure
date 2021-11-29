@@ -5,10 +5,11 @@
 #include "treePublic.h"
 #include "treePrivate.h"
 
-void countNode(node_t *root, int *array);
+void countNode (node_t *root, int *array);
 void countLevel (node_t * root, int *array, int l);
 void countPath (node_t * root, int *np, int *length);
 int visit (node_t *root, int key1, int key2);
+void visit_r (node_t *root, int key, int *d);
 
 #endif
 
@@ -61,7 +62,19 @@ int visit (node_t *root, int key1, int key2);
 //   All array elements are initialized to zero.
 // - Stores in each element array[i] the total number of
 //   nodes of the tree at level i.
-//
+/*
+
+2 5 6 4 1 8
+
+    2
+   / \
+  1   5
+     / \
+    4   6
+         \
+          8
+
+*/
 // Exercise 01-C.
 // void countPath (node_t * root, int *np, int *length);
 // This function:

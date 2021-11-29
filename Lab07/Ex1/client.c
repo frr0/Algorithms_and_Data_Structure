@@ -1,5 +1,6 @@
 #include "treeAddition.h"
 #include "treePublic.h"
+#include <stdio.h>
 
 #define OK 1
 #define KO 0
@@ -9,7 +10,8 @@ int main(void) {
   data_t d;
   int retValue, end = 0, l = 0, length = 0;
   int array1[3] = {0, 0, 0};
-  int array2[20], np = 0, key1 = 0, key2 = 0;
+  int array2[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  int np = 0, key1 = 8, key2 = 15;
   char row[MAXC];
   FILE *fp = NULL;
 
@@ -82,15 +84,27 @@ int main(void) {
       break;
 
     case 5:
+      writeTree(stdout, root, PREORDER);
       countNode(root, array1);
+      /** printf("length: %d\n", l); */
+      printf("Node with no children: %d\n", array1[0]);
+      printf("Node with 1 child: %d\n", array1[1]);
+      printf("Node with 2 children: %d\n", array1[2]);
       break;
 
     case 6:
       countLevel(root, array2, l);
+      for (int i = 0; i < 10; i++) {
+        if (array2[i] != 0) {
+          printf("# of elements al level %d: %d\n", i, array2[i]);
+        }
+      }
       break;
 
     case 7:
       countPath(root, &np, &length);
+      printf("# of path: %d\n", np);
+      printf("sum of path: %d\n", length);
       break;
 
     case 8:
@@ -123,7 +137,7 @@ int main(void) {
       /** fprintf(stdout, "File Name: "); */
       /** scanf("%s", row); */
 
-      fp = fopen("a.txt", "r");
+      fp = fopen("inInt.txt", "r");
       if (fp == NULL) {
         fprintf(stderr, "Error Opening File %s\n", row);
       } else {
