@@ -142,20 +142,13 @@ void writeTree(FILE *fp, node_t *rp, int modo) {
   writeTree(fp, rp->left, modo);
 
   if (modo == INORDER) {
-    /** writeData(fp, rp->id, rp->name, rp->load, rp->passed); */
     writeData(fp, rp->data);
-    /** writeData(fp, rp); */
-    /** writeData(fp, rp->name); */
   }
 
   writeTree(fp, rp->right, modo);
 
   if (modo == POSTORDER) {
-    /** writeData(fp, rp); */
     writeData(fp, rp->data);
-    /** writeData(fp, rp->id, rp->name, rp->load, rp->passed); */
-    /** writeData(fp, rp->name); */
-    /** writeData(fp, rp->id, rp->name, rp->load, rp->passed); */
   }
 
   return;

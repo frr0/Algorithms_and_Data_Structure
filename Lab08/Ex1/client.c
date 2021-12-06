@@ -1,4 +1,5 @@
 #include "client.h"
+#include "lab07-BSTLibrary/treePublic.h"
 #include "util/util.h"
 
 int main(int argc, char *argv[]) {
@@ -19,6 +20,6 @@ int main(int argc, char *argv[]) {
     printf("%d %s %d %d\n", id, name, load, passed);
     root = insert(root, id, name, load, passed);
   }
-  writeTree(f, root, PREORDER);
+  writeTree(f, root, POSTORDER);
   return 0;
 }
