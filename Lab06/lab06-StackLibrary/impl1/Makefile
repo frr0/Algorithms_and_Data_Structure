@@ -1,6 +1,6 @@
 c:
-	# gcc -Wall -g -o client.c  item.c  item-int.c  item-string.c  item-struct.c  stack.c  util.c program && ./program
-	gcc -Wall -g -o client.c  item.c util.c program && ./program
+	gcc -Wall -g -o client.c  item.c  item-int.c  item-string.c  item-struct.c  stack.c  util.c program && ./program
+	# gcc -Wall -g -o client.c  item.c util.c program && ./program
 # stack-int:
 #   cp -R item-int.h ./item.h
 #   cp -R item-int.c ./item.c
