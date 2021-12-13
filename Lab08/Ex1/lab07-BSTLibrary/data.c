@@ -4,7 +4,7 @@
 int readData(FILE *fp, data_t *data) {
   int retValue;
 
-  retValue = fscanf(fp, "%d", data);
+  retValue = fscanf(fp, "%d", &(data->id));
 
   return (retValue);
 }
