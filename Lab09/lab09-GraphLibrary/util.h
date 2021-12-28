@@ -5,9 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define ciao(void)\
+  printf("\nCiao\n\n");
+
 /* macro definition */
-#define util_check_m(expr, msg) \
-  if ( !(expr) ) { \
+#define util_check_m(e, msg) \
+  if ( !(e) ) { \
     fprintf(stderr, "Error: %s\n", msg); \
     exit(EXIT_FAILURE); \
   }

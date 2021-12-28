@@ -15,18 +15,23 @@ provides all main graph library features, such as:
 - etc.
 
 The file content is the following one:
+
 * client.c
   calls the library functions to verify their behavior
+
 * graph.h, graph.c
   define the data structure to store the
   undirected or directed, unweighted or weighted
   graph and all manipulation functions.
+
 * queuePublic.h, queuePrivate.h, queue.c
   implement a FIFO queue library, used within the breadth-first
   visit
+
 * util.c, util.h
   implement some library utility functions (dynamic memory
   allocation, file opening, etc.)
+
 
 The format of the input file is the following:
 

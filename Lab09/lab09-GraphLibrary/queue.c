@@ -4,8 +4,7 @@
 /*
  *  create a new empty queue
  */
-queue_t *queue_init(int size)
-{
+queue_t *queue_init(int size) {
   queue_t *qp;
 
   qp = (queue_t *)util_malloc(sizeof(queue_t));
@@ -17,16 +16,12 @@ queue_t *queue_init(int size)
 /*
  *  return the number of elements stored in the queue
  */
-int queue_count(queue_t *qp)
-{
-  return (qp!=NULL) ? qp->num : 0;
-}
+int queue_count(queue_t *qp) { return (qp != NULL) ? qp->num : 0; }
 
 /*
  *  store a new value in the queue (FIFO policy)
  */
-int queue_put(queue_t *qp, void *data)
-{
+int queue_put(queue_t *qp, void *data) {
   node_t *node;
 
   if (qp == NULL) {
@@ -51,11 +46,10 @@ int queue_put(queue_t *qp, void *data)
 /*
  *  extract a value from the queue (FIFO policy)
  */
-int queue_get(queue_t *qp, void **data_ptr)
-{
+int queue_get(queue_t *qp, void **data_ptr) {
   node_t *node;
 
-  if (qp==NULL || qp->head==NULL) {
+  if (qp == NULL || qp->head == NULL) {
     return 0;
   }
 
@@ -74,15 +68,14 @@ int queue_get(queue_t *qp, void **data_ptr)
 /*
  *  print all the queue elements (FIFO policy)
  */
-void queue_print(FILE *fp, queue_t *qp, void (*print)(FILE *, void *))
-{
+void queue_print(FILE *fp, queue_t *qp, void (*print)(FILE *, void *)) {
   node_t *node;
 
   if (qp != NULL) {
     node = qp->head;
     while (node != NULL) {
       print(fp, node->data);
-      fprintf (fp, "\n");
+      fprintf(fp, "\n");
       node = node->next;
     }
   }
@@ -91,10 +84,9 @@ void queue_print(FILE *fp, queue_t *qp, void (*print)(FILE *, void *))
 /*
  *  deallocate all the memory associated to the queue
  */
-void queue_dispose(queue_t *qp, void (*quit)(void *))
-{
+void queue_dispose(queue_t *qp, void (*quit)(void *)) {
   node_t *node;
-  
+
   if (qp != NULL) {
     while (qp->head != NULL) {
       node = qp->head;

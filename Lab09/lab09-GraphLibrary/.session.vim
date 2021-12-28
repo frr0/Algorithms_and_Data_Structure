@@ -8,8 +8,9 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +20 client.c
-badd +1 graph.c
+badd +72 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt
+badd +64 client.c
+badd +42 graph.c
 badd +1 graph.h
 badd +1 queue.c
 badd +1 queuePrivate.h
@@ -17,12 +18,15 @@ badd +1 queuePublic.h
 badd +1 util.c
 badd +14 util.h
 badd +1 .vimspector.json
-badd +0 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/Makefile
+badd +1 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/Makefile
 badd +11 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in1.txt
 badd +9 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in2.txt
-badd +0 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in3.txt
-badd +0 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in4.txt
-badd +0 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in5.txt
+badd +1 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in3.txt
+badd +1 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in4.txt
+badd +1 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in5.txt
+badd +48 term://~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary//26108:/bin/sh
+badd +1 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c
+badd +0 ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.h
 argglobal
 %argdel
 $argadd client.c
@@ -34,6 +38,8 @@ $argadd queuePublic.h
 $argadd util.c
 $argadd util.h
 set stal=2
+tabnew
+tabnew
 tabnew
 tabnew
 tabnew
@@ -72,18 +78,18 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 124 + 85) / 170)
-exe '2resize ' . ((&lines * 20 + 22) / 45)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 12 + 85) / 170)
-exe '3resize ' . ((&lines * 20 + 22) / 45)
-exe 'vert 3resize ' . ((&columns * 16 + 85) / 170)
-exe '4resize ' . ((&lines * 20 + 22) / 45)
-exe 'vert 4resize ' . ((&columns * 15 + 85) / 170)
-exe '5resize ' . ((&lines * 20 + 22) / 45)
+exe '3resize ' . ((&lines * 21 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 11 + 85) / 170)
+exe '4resize ' . ((&lines * 21 + 23) / 46)
+exe 'vert 4resize ' . ((&columns * 20 + 85) / 170)
+exe '5resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 5resize ' . ((&columns * 29 + 85) / 170)
-exe '6resize ' . ((&lines * 20 + 22) / 45)
+exe '6resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 6resize ' . ((&columns * 15 + 85) / 170)
 argglobal
-balt ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in1.txt
+balt graph.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,12 +100,12 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 20) / 41)
+let s:l = 57 - ((32 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 0
+keepjumps 57
+normal! 06|
 wincmd w
 argglobal
 if bufexists("~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in1.txt") | buffer ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in1.txt | else | edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/in1.txt | endif
@@ -117,7 +123,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 11 - ((10 * winheight(0) + 10) / 20)
+let s:l = 11 - ((10 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -140,7 +146,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 9 - ((8 * winheight(0) + 10) / 20)
+let s:l = 9 - ((8 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -163,7 +169,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 10) / 20)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -216,17 +222,16 @@ normal! zt
 keepjumps 1
 normal! 0
 wincmd w
-4wincmd w
 exe 'vert 1resize ' . ((&columns * 124 + 85) / 170)
-exe '2resize ' . ((&lines * 20 + 22) / 45)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 12 + 85) / 170)
-exe '3resize ' . ((&lines * 20 + 22) / 45)
-exe 'vert 3resize ' . ((&columns * 16 + 85) / 170)
-exe '4resize ' . ((&lines * 20 + 22) / 45)
-exe 'vert 4resize ' . ((&columns * 15 + 85) / 170)
-exe '5resize ' . ((&lines * 20 + 22) / 45)
+exe '3resize ' . ((&lines * 21 + 23) / 46)
+exe 'vert 3resize ' . ((&columns * 11 + 85) / 170)
+exe '4resize ' . ((&lines * 21 + 23) / 46)
+exe 'vert 4resize ' . ((&columns * 20 + 85) / 170)
+exe '5resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 5resize ' . ((&columns * 29 + 85) / 170)
-exe '6resize ' . ((&lines * 20 + 22) / 45)
+exe '6resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 6resize ' . ((&columns * 15 + 85) / 170)
 tabnext
 edit graph.c
@@ -264,7 +269,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -287,11 +292,79 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 13 - ((12 * winheight(0) + 20) / 41)
+let s:l = 13 - ((12 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 13
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
+exe 'vert 2resize ' . ((&columns * 84 + 85) / 170)
+tabnext
+edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
+exe 'vert 2resize ' . ((&columns * 84 + 85) / 170)
+argglobal
+if bufexists("~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c") | buffer ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c | else | edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c | endif
+if &buftype ==# 'terminal'
+  silent file ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c
+endif
+balt ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
+normal! 0
+wincmd w
+argglobal
+if bufexists("~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.h") | buffer ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.h | else | edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.h | endif
+if &buftype ==# 'terminal'
+  silent file ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.h
+endif
+balt ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/graph_extended.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 1
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
@@ -319,9 +392,9 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
-exe '2resize ' . ((&lines * 20 + 22) / 45)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 84 + 85) / 170)
-exe '3resize ' . ((&lines * 20 + 22) / 45)
+exe '3resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 3resize ' . ((&columns * 84 + 85) / 170)
 argglobal
 if bufexists("queue.c") | buffer queue.c | else | edit queue.c | endif
@@ -339,7 +412,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -362,7 +435,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 10) / 20)
+let s:l = 4 - ((3 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -393,9 +466,9 @@ keepjumps 1
 normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
-exe '2resize ' . ((&lines * 20 + 22) / 45)
+exe '2resize ' . ((&lines * 21 + 23) / 46)
 exe 'vert 2resize ' . ((&columns * 84 + 85) / 170)
-exe '3resize ' . ((&lines * 20 + 22) / 45)
+exe '3resize ' . ((&lines * 20 + 23) / 46)
 exe 'vert 3resize ' . ((&columns * 84 + 85) / 170)
 tabnext
 edit util.c
@@ -433,7 +506,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -456,7 +529,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -501,7 +574,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 1 - ((0 * winheight(0) + 20) / 41)
+let s:l = 1 - ((0 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -513,7 +586,7 @@ if bufexists(".vimspector.json") | buffer .vimspector.json | else | edit .vimspe
 if &buftype ==# 'terminal'
   silent file .vimspector.json
 endif
-balt .vimspector.json
+balt ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09-GraphLibrary/Makefile
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -524,7 +597,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 8 - ((7 * winheight(0) + 20) / 41)
+let s:l = 8 - ((7 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -533,6 +606,29 @@ normal! 028|
 wincmd w
 exe 'vert 1resize ' . ((&columns * 85 + 85) / 170)
 exe 'vert 2resize ' . ((&columns * 84 + 85) / 170)
+tabnext
+edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt
+argglobal
+if bufexists("~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt") | buffer ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt | else | edit ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt | endif
+if &buftype ==# 'terminal'
+  silent file ~/Dropbox\ (Politecnico\ Di\ Torino\ Studenti)/Anno_II.1/ADS/Algorithms_and_Data_Structure/Lab09/lab09.txt
+endif
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 72 - ((20 * winheight(0) + 21) / 42)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 72
+normal! 014|
 tabnext 1
 set stal=1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -540,8 +636,6 @@ if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0&& getbufvar(s:wipebuf
 endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20 shortmess=filnxtToOFcI
-let &winminheight = s:save_winminheight
-let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

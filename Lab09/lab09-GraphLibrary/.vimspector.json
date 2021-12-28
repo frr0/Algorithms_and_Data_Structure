@@ -4,8 +4,8 @@
             "adapter": "vscode-cpptools",
             "configuration": {
                 "request": "launch",
-                "program": "${workspaceRoot}/prog",
-                "args": ["f.txt"],
+                "program": "${workspaceRoot}/impl1",
+                "args": ["in1.txt"],
                 "cwd": "${workspaceRoot}",
                 "environment": [],
                 "externalConsole": true,
