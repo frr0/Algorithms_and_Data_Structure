@@ -17,8 +17,6 @@ int main(int argc, char *argv[]) {
   int i;
   int nb = 0;
 
-  /** ciao(); */
-
   util_check_m(argc >= 2, "missing parameter.");
   g = graph_load(argv[1]);
 
@@ -32,7 +30,7 @@ int main(int argc, char *argv[]) {
   printf("DFS\n");
   // Redundant after load
   graph_attribute_init(g);
-  graph_bfs_distance(g, src);
+  /*graph_bfs_distance(g, src);*/
   graph_dfs(g, src);
 
   /** ========================================================== */
@@ -75,7 +73,7 @@ int main(int argc, char *argv[]) {
       printf("%2d: [%d] (%d)\n", n->id, n->dist, n->pred ? n->pred->id : -1);
     }
     n = n->next;
-    nb = graph_bfs_count(nb);
+    /*nb = graph_bfs_count(nb);*/
   }
 
   printf("====== # BFS ======\n");
